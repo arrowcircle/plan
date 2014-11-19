@@ -1,0 +1,12 @@
+.row.nested-fields
+  .form-group.col-md-4
+    = f.hidden_field :parent_id, value: @item.id
+    = f.select :item_id, options_for_select(Item.where.not(id: @item.id).collect { |i| [i.name, i.id] }, selected: f.object.item_id), {}, { class: 'form-control' }
+  .form-group.col-xs-2
+    = f.text_field :quantity, class: 'form-control'
+  .form-group.col-md-4
+    = link_to_remove_association raw("<span class='btn btn-danger'><span class='glyphicon glyphicon-remove'>Удалить</span></span>"), f
+
+
+
+

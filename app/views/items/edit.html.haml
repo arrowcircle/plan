@@ -1,0 +1,20 @@
+%h1
+  Редактирование номенклатуры
+  = link_to 'Назад', [:items], class: 'btn btn-default'
+
+= form_for @item, html: { class: 'form-horizontal' } do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  %h3 Состоит из
+  #itemizations
+    = f.simple_fields_for :itemizations do |itemization|
+      = render 'itemization_fields', f: itemization
+    .links.row
+      = link_to_add_association 'Добавить', f, :itemizations, class: 'btn btn-default'
+  %br
+  .row
+    = f.submit 'Сохранить', class: 'btn btn-primary'
+    или
+    = link_to 'Отменить', [:items], class: 'btn btn-default'

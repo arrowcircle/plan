@@ -1,0 +1,29 @@
+%h1
+  = @item.name
+  .btn-group
+    = link_to 'Назад', [:items], class: 'btn btn-default'
+    = link_to 'Редактировать', [:edit, @item], class: 'btn btn-primary'
+
+- if @item.children.any?
+  %h2 Состоит из:
+  %table.table
+    %thead
+      %tr
+        %th Артикул
+        %th Количество
+    %tbody
+      - @item.children.includes(:item).each do |child|
+        %tr
+          %td= link_to child.item.name, child.item
+          %td= child.quantity
+  %h2 Полный состав:
+  %table.table
+    %thead
+      %tr
+        %th Артикул
+        %th Количество
+    %tbody
+      - @item.tree.each do |quantity, item|
+        %tr
+          %td= link_to item.name, item
+          %td= quantity
