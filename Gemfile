@@ -44,6 +44,10 @@ gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'rails3-jquery-autocomplete'
 
+gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'bcrypt'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'main/index'
   root to: 'main#index'
   resources :items do
