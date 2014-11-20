@@ -2,7 +2,7 @@
   .col-lg-4
     %span.header Номенклатура
   .col-lg-4
-    = form_tag '/', method: :get do
+    = form_tag items_path, method: :get do
       .input-group
         = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Поиск'
         .input-group-btn

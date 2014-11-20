@@ -24,8 +24,8 @@
         = link_to t('title'), root_path, class: 'navbar-brand'
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li{ class: controller_name == 'items' ? 'active' : '' }= link_to t('catalog'), root_url
-            %li= link_to t('plans'), "/path2"
+            %li{ class: controller_name == 'items' ? 'active' : '' }= link_to t('catalog'), items_path
+            %li= link_to t('plans'), plans_path
           %ul.nav.navbar-nav.navbar-right
             - if try(:user_signed_in?)
               %li.dropdown
@@ -40,9 +40,14 @@
 
     .container
       .row
-        .col-lg-9
-          =# bootstrap_flash
-          = yield
+        - if content_for(:sidebar).present?
+          .col-lg-9
+            =# bootstrap_flash
+            = yield
+        - else
+          .col-lg-12
+            =# bootstrap_flash
+            = yield
         - if content_for(:sidebar)
           .col-lg-3
             .well.sidebar-nav

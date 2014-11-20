@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  root to: 'items#index'
+  get 'main/index'
+  root to: 'main#index'
   resources :items do
     get :autocomplete_name, on: :collection
     get "(:tab)" => :index, tab: /complex|basic/, on: :collection
   end
+
+  resources :plans
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
