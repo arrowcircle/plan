@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  has_many :itemizations, foreign_key: :parent_id
+  has_many :itemizations, foreign_key: :parent_id, inverse_of: :item
   has_many :items, through: :itemizations
   belongs_to :account
 

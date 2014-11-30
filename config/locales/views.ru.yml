@@ -1,4 +1,8 @@
 ru:
+  items:
+    index:
+      new: Добавить
+
   layouts:
     application:
       close: Закрыть
@@ -16,7 +20,8 @@ ru:
       name: Фамилия и имя
       company: Название компании
       sign_up: Начать работу
-
+  save: Сохранить
+  cancel: Отменить
   title: План
   catalog: Изделия
   plans: Планы

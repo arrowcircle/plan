@@ -14,6 +14,6 @@
       = link_to_add_association 'Добавить', f, :itemizations, class: 'btn btn-default'
   %br
   .row
-    = f.submit 'Сохранить', class: 'btn btn-primary'
+    = f.submit t('save'), class: 'btn btn-primary'
     или
-    = link_to 'Отменить', [:items], class: 'btn btn-default'
+    = link_to t('cancel'), [:items], class: 'btn btn-default'

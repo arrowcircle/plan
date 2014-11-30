@@ -14,6 +14,9 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to [:items], notice: 'Номенклатура добавлена'
     else
+      logger.info "=="
+      logger.info @item.errors.full_messages
+      logger.info "=="
       render 'edit'
     end
   end
@@ -48,6 +51,8 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit!
+    res = params[:item]
+    res[:itemizations_attributes].each { |k, v| v.merge!(account_id: account.id) } if res[:itemizations_attributes]
+    res.permit!
   end
 end

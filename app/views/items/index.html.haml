@@ -10,7 +10,7 @@
   .col-lg-4
     = link_to [:new, :item], class: 'btn btn-primary' do
       .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
-      Добавить
+      = t('.new')
 .row
   %ul.nav.nav-tabs
     %li{ class: "#{'active' unless params[:tab].present? }" }= link_to 'Все', [:items]
@@ -40,4 +40,4 @@
       Начните с добавления базовых изделий. Базовые изделия являются неделимыми, из них состоят сборные изделия.
     = link_to [:new, :item], class: 'btn btn-primary' do
       .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
-      Добавить
+      = t('.new')
