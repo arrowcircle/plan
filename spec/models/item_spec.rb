@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe Item do
   let(:root) { create(:root) }
-  let(:item) { create(:item) }
-  let(:parent) { create(:item) }
-  let(:subitem) { create(:item) }
+  let(:item) { create(:item, account_id: root.account_id) }
+  let(:parent) { create(:item, account_id: root.account_id) }
+  let(:subitem) { create(:item, account_id: root.account_id) }
 
   it 'возвращает пустой массиов для пустого дерева' do
     expect(parent.tree).to eq Hash.new

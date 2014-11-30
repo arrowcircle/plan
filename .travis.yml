@@ -5,4 +5,5 @@ notifications:
 rvm:
   - 2.1
 before_script:
-  - "bundle exec rake db:create db:migrate RAILS_ENV=test"
+  - "cp config/database.yml.sample config/database.yml"
+  - bundle exec rake db:create db:migrate RAILS_ENV=test
