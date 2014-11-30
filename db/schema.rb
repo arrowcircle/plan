@@ -39,20 +39,25 @@ ActiveRecord::Schema.define(version: 20141129223314) do
     t.integer  "item_id"
     t.integer  "parent_id"
     t.integer  "quantity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
+  add_index "itemizations", ["account_id"], name: "index_itemizations_on_account_id", using: :btree
   add_index "itemizations", ["item_id"], name: "index_itemizations_on_item_id", using: :btree
   add_index "itemizations", ["parent_id"], name: "index_itemizations_on_parent_id", using: :btree
 
   create_table "items", force: true do |t|
     t.string   "name",       null: false
+    t.string   "articul",    null: false
     t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
+  add_index "items", ["account_id"], name: "index_items_on_account_id", using: :btree
   add_index "items", ["type", "id"], name: "index_items_on_type_and_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -68,8 +73,8 @@ ActiveRecord::Schema.define(version: 20141129223314) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -5,12 +5,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = account.items.build
     render 'edit'
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = account.items.build(item_params)
     if @item.save
       redirect_to [:items], notice: 'Номенклатура добавлена'
     else
@@ -19,11 +19,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = scope.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = scope.find(params[:id])
     if @item.update(item_params)
       redirect_to [:items], notice: 'Номенклатура обновлена'
     else
@@ -32,19 +32,19 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = scope.find(params[:id])
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    @item = scope.find(params[:id])
   end
 
   private
 
   def scope
-    return Item.complex if params[:tab] == 'complex'
-    return Item.basic if params[:tab] == 'basic'
-    Item
+    return Item.for_account(account.id).complex(account.id) if params[:tab] == 'complex'
+    return Item.for_account(account.id).basic(account.id) if params[:tab] == 'basic'
+    Item.for_account(account.id)
   end
 
   def item_params

@@ -1,17 +1,15 @@
 class Item < ActiveRecord::Base
   has_many :itemizations, foreign_key: :parent_id
   has_many :items, through: :itemizations
+  belongs_to :account
+
+  scope :for_account, ->(account_id) { where(account_id: account_id) }
+  scope :basic, ->(account_id) { where.not(id: Itemization.for_account(account_id).pluck(:parent_id).uniq) }
+  # All parent ids - all children ids
+  scope :complex, ->(account_id) { Item.where(id: (Itemization.for_account(account_id).pluck(:parent_id).uniq - Itemization.for_account(account_id).pluck(:item_id).uniq)) }
 
   accepts_nested_attributes_for :itemizations, allow_destroy: true
-
-  def self.basic
-    Item.where.not(id: Itemization.pluck(:parent_id).uniq)
-  end
-
-  def self.complex
-    # All parent ids - all children ids
-    Item.where(id: (Itemization.pluck(:parent_id).uniq - Itemization.pluck(:item_id).uniq))
-  end
+  validates :account, presence: true
 
   def self.search(q = '')
     return all if q && q.size < 3

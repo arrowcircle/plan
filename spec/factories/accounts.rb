@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :account do
-    name "MyString"
+    name Faker::Company.name
+    association :owner, factory: :user
   end
-
 end

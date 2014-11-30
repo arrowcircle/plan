@@ -12,8 +12,8 @@ describe Item do
 
   it 'возвращает плоский массив для 2х элементов' do
     parent; item; subitem
-    i1 = Itemization.create(parent_id: parent.id, item_id: item.id, quantity: 1)
-    i2 = Itemization.create(parent_id: parent.id, item_id: subitem.id, quantity: 2)
+    i1 = Itemization.create(parent_id: parent.id, item_id: item.id, quantity: 1, account_id: parent.account_id)
+    i2 = Itemization.create(parent_id: parent.id, item_id: subitem.id, quantity: 2, account_id: parent.account_id)
     expect(parent.tree.keys).to eq [1, 2]
   end
 
