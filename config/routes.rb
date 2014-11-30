@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'main/index'
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  get '/guide' => 'main#guide'
   root to: 'main#index'
+
+  resources :accounts do
+    get :set, on: :member
+  end
+
   resources :items do
     get :autocomplete_name, on: :collection
     get "(:tab)" => :index, tab: /complex|basic/, on: :collection
   end
 
   resources :plans
+  resources :registrations
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

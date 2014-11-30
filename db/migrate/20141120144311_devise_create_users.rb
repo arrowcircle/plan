@@ -3,6 +3,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
+      ## Custom fields
+      t.string :name,               null: false, default: ""
+      t.string :avatar
+
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -31,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.datetime :locked_at
 
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :users, :email,                unique: true

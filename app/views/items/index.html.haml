@@ -1,6 +1,6 @@
 .row
   .col-lg-4
-    %span.header Номенклатура
+    %span.header Изделия
   .col-lg-4
     = form_tag items_path, method: :get do
       .input-group
@@ -35,7 +35,9 @@
                 = link_to 'Ред.', [:edit, item], class: 'btn btn-default'
                 = link_to 'Удалить', [item], method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger'
   - else
-    %h2 Вы пока не добавили ни одного элемента номенклатуры
+    %h2 Вы пока не добавили ни одного изделия
+    %p
+      Начните с добавления базовых изделий. Базовые изделия являются неделимыми, из них состоят сборные изделия.
     = link_to [:new, :item], class: 'btn btn-primary' do
       .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
       Добавить

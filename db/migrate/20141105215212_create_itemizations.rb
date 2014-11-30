@@ -5,7 +5,7 @@ class CreateItemizations < ActiveRecord::Migration
       t.integer :parent_id, index: true
       t.integer :quantity
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

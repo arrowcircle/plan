@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :name, null: false
       t.string :type
 
-      t.timestamps
+      t.timestamps null: false
     end
     add_index :items, [:type, :id]
   end

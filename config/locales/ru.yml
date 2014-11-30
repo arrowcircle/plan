@@ -1,5 +1,30 @@
 ru:
+  activemodel:
+    attributes:
+      registration:
+        name: ФИО
+        company: Название компании
+        email: E-mail
+        password: Пароль
+
   activerecord:
     attributes:
+      account:
+        name: Название
       item:
         name: Название
+      user:
+        email: E-mail
+        name: ФИО
+        password: Пароль
+        remember_me: Запомнить?
+
+    models:
+      account:
+        one: Компания
+        acc: компанию
+        other: Компании
+      user:
+        one: Пользователь
+        acc: пользователя
+        other: Пользователи
