@@ -3,7 +3,7 @@ class Itemization < ActiveRecord::Base
   belongs_to :item
   belongs_to :account
 
-  validates :parent, :item, :quantity, :account, presence: true
+  validates :item, :quantity, :account, presence: true
 
   scope :for_account, ->(account_id) { where(account_id: account_id) }
 

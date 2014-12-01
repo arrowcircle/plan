@@ -12,11 +12,8 @@ class ItemsController < ApplicationController
   def create
     @item = account.items.build(item_params)
     if @item.save
-      redirect_to [:items], notice: 'Номенклатура добавлена'
+      redirect_to [:items], notice: 'Изделие добавлено'
     else
-      logger.info "=="
-      logger.info @item.errors.full_messages
-      logger.info "=="
       render 'edit'
     end
   end
@@ -28,7 +25,7 @@ class ItemsController < ApplicationController
   def update
     @item = scope.find(params[:id])
     if @item.update(item_params)
-      redirect_to [:items], notice: 'Номенклатура обновлена'
+      redirect_to [:items], notice: 'Изделие обновлено'
     else
       render 'edit'
     end
