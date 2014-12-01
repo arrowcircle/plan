@@ -12,6 +12,6 @@ feature 'Изделия' do
     fill_in :item_articul, with: Faker::Product.model
     click_button I18n.t('save')
     expect(page).to have_content name
-    expect(page).to have_content 'Номенклатура добавлена'
+    expect(page).to have_content 'Изделие добавлено'
   end
 end
