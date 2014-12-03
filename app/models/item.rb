@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
   validates :account, presence: true
 
   def self.search(q = '')
-    return all if q && q.size < 3
+    return Item if q && q.size < 3
     Item.where("name ILIKE :q", q: "%#{q}%")
   end
 

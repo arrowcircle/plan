@@ -41,6 +41,8 @@ gem 'haml-rails'
 gem 'cocoon'
 gem 'quiet_assets'
 gem 'email_validator'
+gem 'kaminari'
+gem 'kaminari-i18n'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
@@ -65,6 +67,7 @@ gem 'capistrano-rvm'
 
 gem 'utf8-cleaner'
 
+gem 'simple_xlsx_reader'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
