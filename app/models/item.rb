@@ -21,6 +21,10 @@ class Item < ActiveRecord::Base
     Itemization.where(parent_id: id, account_id: account_id)
   end
 
+  def parents
+    Item.select('items.*, max(itemizations.quantity) as quantity').joins(:itemizations).where('itemizations.item_id' => id).group('items.id')
+  end
+
   def self.tree_for(item)
     item.children.includes(:item).inject([]) do |memo, child|
       item = child.item

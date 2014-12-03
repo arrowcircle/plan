@@ -27,3 +27,15 @@
         %tr
           %td= link_to item.name, item
           %td= quantity
+- if Itemization.where(item_id: @item.id).any?
+  %h2 Участвует в:
+  %table.table
+    %thead
+      %tr
+        %th Артикул
+        %th Количество
+    %tbody
+      - @item.parents.each do |item|
+        %tr
+          %td= link_to item.name, item
+          %td= item.quantity
