@@ -4,10 +4,17 @@ class Itemization < ActiveRecord::Base
   belongs_to :account
 
   validates :item, :quantity, :account, presence: true
+  validate :infinite_loop
 
   scope :for_account, ->(account_id) { where(account_id: account_id) }
 
   def to_tree
     { item.id => quantity }
+  end
+
+  private
+
+  def infinite_loop
+    errors[:base] << 'Ошибка зацикливания связей' if Itemization.where(parent_id: item_id, item_id: parent_id).any?
   end
 end

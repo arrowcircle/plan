@@ -6,7 +6,8 @@ class Item < ActiveRecord::Base
   scope :for_account, ->(account_id) { where(account_id: account_id) }
   scope :basic, ->(account_id) { where.not(id: Itemization.for_account(account_id).pluck(:parent_id).uniq) }
   # All parent ids - all children ids
-  scope :complex, ->(account_id) { Item.where(id: (Itemization.for_account(account_id).pluck(:parent_id).uniq - Itemization.for_account(account_id).pluck(:item_id).uniq)) }
+  # scope :complex, ->(account_id) { Item.where(id: (Itemization.for_account(account_id).pluck(:parent_id).uniq - Itemization.for_account(account_id).pluck(:item_id).uniq)) }
+  scope :complex, ->(account_id) { Item.where(id: Itemization.for_account(account_id).pluck(:parent_id)) }
 
   accepts_nested_attributes_for :itemizations, allow_destroy: true
   validates :account, presence: true
