@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (6.0.0)
     autoprefixer-rails (4.0.1.1)
       execjs
@@ -138,6 +139,8 @@ GEM
     kaminari-i18n (0.2.0)
       kaminari
       rails
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (2.8.3)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -306,6 +309,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   kaminari-i18n
+  launchy
   pg
   quiet_assets
   rails (= 4.2.0rc1)

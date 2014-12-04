@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get "(:tab)" => :index, tab: /complex|basic/, on: :collection
   end
 
+  resources :invites
   resources :plans
   resources :registrations
   # The priority is based upon order of creation: first created -> highest priority.

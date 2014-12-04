@@ -1,0 +1,7 @@
+%h1 Регистрация
+
+= simple_form_for @invitation do |f|
+  = f.input :name
+  = f.input :password
+
+  = f.submit t('save'), class: 'btn btn-primary'

@@ -1,0 +1,12 @@
+.col-lg-4
+  %span.header= t('.header')
+.col-lg-4
+  = link_to [:invites], class: 'btn btn-default' do
+    = t('back')
+.row
+= simple_form_for @invit do |f|
+  - 5.times do
+    = f.input :emails, multiple: true, label: false, placeholder: t('.emails'), autocomplete: :off
+  = f.submit t('save'), class: 'btn btn-primary'
+  или
+  = link_to t('cancel'), [:items], class: 'btn btn-default'

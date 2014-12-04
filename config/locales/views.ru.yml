@@ -1,4 +1,5 @@
 ru:
+  back: Назад
   items:
     index:
       new: Добавить
@@ -9,6 +10,14 @@ ru:
       sign_in: Войти
       sign_out: Выход
       guide: С чего начать?
+      invites: Пользователи
+  invites:
+    index:
+      header: Пользователи
+      new: Добавить
+    new:
+      header: Добавить пользователей
+      emails: Е-мэйл пользователя
   main:
     index:
       start: Начать работу
