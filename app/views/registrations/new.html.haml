@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-heading
+    %h4= t('.sign_up', :default => "Sign up")
+  .panel-body
+    = simple_form_for @registration do |f|
+      = f.input :name, placeholder: t('.name')
+      = f.input :company, placeholder: t('.company')
+      = f.input :email
+      = f.input :password
+      = f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary"
+      или
+      = link_to t('.sign_in', :default => "Вход"), new_user_session_path, class: "btn btn-default"

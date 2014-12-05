@@ -1,0 +1,39 @@
+.col-lg-4
+  %span.header Пользователи
+.col-lg-4
+  = link_to [:new, :invite], class: 'btn btn-primary' do
+    .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
+    = t('.new')
+.row
+
+- if @account_users.any?
+  %h3 Зарегистрированные пользователи
+  %table.table
+    %thead
+      %tr
+        %th Имя
+        %th
+    %tbody
+      - @account_users.all.each do |au|
+        %tr
+          %td= au.user.name
+          %td
+            = link_to invite_path(au, invite: false), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
+              %span.glyphicon.glyphicon-remove= t('delete')
+
+- if @invites.any?
+  %h3 Ожидают регистрации
+  %table.table
+    %thead
+      %tr
+        %th Email
+        %th Дата приглашения
+        %th
+    %tbody
+      - @invites.all.each do |invite|
+        %tr
+          %td= invite.email
+          %td= l invite.created_at, format: '%d, %b, %Y %H:%M'
+          %td
+            = link_to invite_path(invite, invite: true), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
+              %span.glyphicon.glyphicon-remove= t('delete')

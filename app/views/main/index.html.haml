@@ -3,6 +3,6 @@
   %p Планируйте ваше производство онлайн. Забудьте про неудобный Excel и прочие страшные программы.
   %p Встречайте! Производственный план онлайн. Бесплатно!
   %p
-    = link_to 'Начать работу', '#', class: 'btn btn-primary', role: :button
+    = link_to t('.start'), new_registration_path, class: 'btn btn-primary', role: :button
     или
-    = link_to 'Войти', '#', class: 'btn btn-default', role: :button
+    = link_to t('.sign_in'), new_user_session_path, class: 'btn btn-default', role: :button

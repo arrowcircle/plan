@@ -24,3 +24,4 @@
 
 # Ignore uploads
 /public/uploads
+/.powrc

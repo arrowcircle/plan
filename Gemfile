@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0rc1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -28,22 +28,34 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
+  gem 'launchy'
+  gem 'web-console', '~> 2.0'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
   gem 'ffaker'
+  gem 'capybara'
 end
 
 gem 'haml-rails'
 gem 'cocoon'
 gem 'quiet_assets'
+gem 'email_validator'
+gem 'kaminari'
+gem 'kaminari-i18n'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'rails3-jquery-autocomplete'
 
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views'
+gem 'bcrypt'
+
+gem 'rails-i18n'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -54,6 +66,9 @@ gem 'rails3-jquery-autocomplete'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
 
+gem 'utf8-cleaner'
+
+gem 'simple_xlsx_reader'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

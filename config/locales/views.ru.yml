@@ -1,4 +1,37 @@
 ru:
+  back: Назад
+  items:
+    index:
+      new: Добавить
+
+  layouts:
+    application:
+      close: Закрыть
+      sign_in: Войти
+      sign_out: Выход
+      guide: С чего начать?
+      invites: Пользователи
+  invites:
+    index:
+      header: Пользователи
+      new: Добавить
+    new:
+      header: Добавить пользователей
+      emails: Е-мэйл пользователя
+  main:
+    index:
+      start: Начать работу
+      sign_in: Войти
+  registrations:
+    create:
+      welcome: Добро пожаловать! Регистрация завершена, теперь можно приступать к работе
+    new:
+      name: Фамилия и имя
+      company: Название компании
+      sign_up: Начать работу
+  save: Сохранить
+  cancel: Отменить
+  delete: Удалить
   title: План
   catalog: Изделия
   plans: Планы
