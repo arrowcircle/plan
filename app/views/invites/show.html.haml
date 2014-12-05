@@ -1,6 +1,6 @@
 %h1 Регистрация
 
-= simple_form_for @invitation do |f|
+= simple_form_for @invitation, url: [@invite], method: :patch do |f|
   = f.input :name
   = f.input :password
 

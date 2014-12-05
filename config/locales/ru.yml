@@ -6,6 +6,9 @@ ru:
         company: Название компании
         email: E-mail
         password: Пароль
+      invite:
+        name: ФИО
+        password: Пароль
 
   activerecord:
     attributes:

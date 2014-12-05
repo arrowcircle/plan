@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :account
+
+  def authenticate_owner!
+    return redirect_to root_path, alert: 'Недостаточно прав' unless owner?
+  end
+
+  def owner?
+    user_signed_in? && current_user.id == account.owner_id
+  end
+  helper_method :owner?
 end

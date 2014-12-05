@@ -17,7 +17,9 @@
       - @account_users.all.each do |au|
         %tr
           %td= au.user.name
-          %td= link_to 'Удалить', invite_path(au, invite: false), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm'
+          %td
+            = link_to invite_path(au, invite: false), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
+              %span.glyphicon.glyphicon-remove= t('delete')
 
 - if @invites.any?
   %h3 Ожидают регистрации
@@ -32,4 +34,6 @@
         %tr
           %td= invite.email
           %td= l invite.created_at, format: '%d, %b, %Y %H:%M'
-          %td= link_to 'Удалить', invite_path(invite, invite: true), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm'
+          %td
+            = link_to invite_path(invite, invite: true), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
+              %span.glyphicon.glyphicon-remove= t('delete')

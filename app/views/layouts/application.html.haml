@@ -28,7 +28,8 @@
               %li{ class: active?('items') }= link_to t('catalog'), items_path
               %li{ class: active?('plans') }= link_to t('plans'), plans_path
               %li{ class: active?('main', action_name == 'guide') }= link_to t('.guide'), guide_path
-              %li{ class: active?('invites') }= link_to t('.invites'), invites_path
+              - if owner?
+                %li{ class: active?('invites') }= link_to t('.invites'), invites_path
 
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?

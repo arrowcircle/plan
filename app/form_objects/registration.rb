@@ -5,6 +5,7 @@ class Registration
   validates :name, :password, :company, presence: true
   validates :email, email: true, presence: true
   validate :email_is_unique
+  validates :password, complex_password: true
 
   attr_accessor :email, :name, :password, :company, :user, :account
 

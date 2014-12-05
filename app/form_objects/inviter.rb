@@ -1,7 +1,7 @@
 class Inviter
   include ActiveModel::Model
 
-  attr_accessor :emails, :account_id, :users
+  attr_accessor :emails, :account_id
 
   def self.model_name
     Invite.model_name
@@ -21,9 +21,8 @@ class Inviter
   end
 
   def add_account_users
-    @users = User.where(email: @emails)
     users.each do |user|
-      AccountUser.create(account_id: account_id, user_id: user_id) unless AccountUser.where(account_id: account_id, user_id: user_id).any?
+      AccountUser.create(account_id: account_id, user_id: user.id) unless AccountUser.where(account_id: account_id, user_id: user.id).any?
     end
   end
 
@@ -35,5 +34,9 @@ class Inviter
 
   def invite_emails
     emails - users.pluck(:email)
+  end
+
+  def users
+    @users ||= User.where(email: emails)
   end
 end

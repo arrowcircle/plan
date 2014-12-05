@@ -36,7 +36,8 @@
             %td
               .btn-group
                 = link_to 'Ред.', [:edit, item], class: 'btn btn-default btn-sm'
-                = link_to 'Удалить', [item], method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm'
+                = link_to [item], method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
+                  %span.glyphicon.glyphicon-remove= t('delete')
     = paginate @items
   - else
     %h2 Вы пока не добавили ни одного изделия
