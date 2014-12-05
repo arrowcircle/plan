@@ -25,3 +25,4 @@
 # Ignore uploads
 /public/uploads
 /.powrc
+/.capistrano
