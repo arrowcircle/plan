@@ -1,11 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_filter :configure_permitted_parameters
+  def new
+    redirect_to root_path
+  end
 
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email, :password, :name, owned_accounts: [:name])
-    end
+  def create
+    redirect_to root_path
   end
 end
