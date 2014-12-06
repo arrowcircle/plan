@@ -6,32 +6,9 @@
 
 - if @item.children.any?
   %h2 Состоит из:
-  %table.table
-    %thead
-      %tr
-        %th Артикул
-        %th Название
-        %th Количество
-    %tbody
-      - @item.children.includes(:item).each do |child|
-        %tr
-          %td= link_to child.item.articul, child.item
-          %td= link_to child.item.name, child.item
-          %td= child.quantity
-  %h2 Полный состав:
-  %table.table
-    %thead
-      %tr
-        %th Артикул
-        %th Название
-        %th Количество
-    %tbody
-      - @item.tree.each do |item, quantity|
-        %tr
-          %td= link_to item.articul, item
-          %td= link_to item.name, item
-          %td= quantity
-- if Itemization.where(item_id: @item.id).any?
+  = render @item
+
+- if Itemization.where(item_id: @item.id, account_id: account.id).any?
   %h2 Участвует в:
   %table.table
     %thead

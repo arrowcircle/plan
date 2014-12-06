@@ -56,6 +56,9 @@ gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 gem 'bcrypt'
 
+gem 'dalli'
+gem 'rack-mini-profiler', group: :development
+
 gem 'rails-i18n'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

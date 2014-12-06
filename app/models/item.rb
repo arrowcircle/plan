@@ -18,7 +18,7 @@ class Item < ActiveRecord::Base
   end
 
   def children
-    Itemization.where(parent_id: id, account_id: account_id)
+    Itemization.joins('left join items on items.id = itemizations.item_id').where(parent_id: id, account_id: account_id).group('itemizations.id')
   end
 
   def parents
