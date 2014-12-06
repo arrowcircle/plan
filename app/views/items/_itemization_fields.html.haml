@@ -1,4 +1,5 @@
 .row.nested-fields.form-inline
-  = f.input :item_id, collection: Item.for_account(account.id).where.not(id: @item.id).limit(10).map { |i| [i.name, i.id] }, label: false, error: false
+  = f.input :item_id, url: autocomplete_item_articul_items_path, as: :autocomplete, label: false, error: false, append_to: ".item_id"
+  = f.hidden_field :item_id, class: 'item_id'
   = f.input :quantity, label: false, error: false
-  = link_to_remove_association raw("<span class='btn btn-danger'><span class='glyphicon glyphicon-remove'>Удалить</span></span>"), f
+  = link_to_remove_association raw("<span class='glyphicon glyphicon-remove'></span>"), f
