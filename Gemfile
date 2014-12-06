@@ -69,6 +69,7 @@ gem 'rails-i18n'
 # Use Capistrano for deployment
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
+gem 'capistrano-db-tasks', require: false
 
 gem 'utf8-cleaner'
 
