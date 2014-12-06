@@ -1,33 +1,18 @@
 namespace :import do
-  task basic: :environment do
-    Item.delete_all
-    Item.find_by_sql("select setval('items_id_seq', 1);")
-    doc = SimpleXlsxReader.open('tmp/full_items_names.xlsx')
-    sql_template = <<-SQL
-      insert into items (name, articul, account_id, created_at, updated_at) values
-    SQL
-    account = Account.first
-    @inserter = []
-    doc.sheets.first.rows.each do |row|
-      name, articul = row.first, row.last
-      name = articul if name.nil? || name.size < 2
-      if name && articul && name.size > 2 && articul.size > 2
-        @inserter << "('#{name}','#{articul}',#{account.id}, now(), now())"
-        print '.'
-      else
-        print 'x'
-      end
-    end
-    Item.find_by_sql("#{sql_template} #{@inserter.join(',')}")
-  end
-
-  task sheets: :environment do
+  task all: :environment do
+    ignored_sheets = %w{ Итого }
     @not_found = []
     doc = SimpleXlsxReader.open('tmp/erp.xlsx')
     ac_id = Account.first.id
-    sheets = doc.sheets if doc.sheets.size == 1
+    sheets = doc.sheets.select { |sheet| !ignored_sheets.include?(sheet.name) }
     sheets = doc.sheets[0..-2] if doc.sheets.size > 1
-    sheets.each { |sheet| s = SheetParser.new(sheet, ac_id); s.parse; @not_found = @not_found + s.not_found }
+    sheets.each do |sheet|
+      unless ignored_sheets.include? sheet.name
+        s = SheetParser.new(sheet, ac_id)
+        s.parse
+        @not_found = @not_found + s.not_found
+      end
+    end
     puts @not_found
     puts @not_found.size
   end
@@ -74,6 +59,7 @@ end
 
 class RowParser
   attr_accessor :row, :account_id
+
   def initialize(row, account_id = nil)
     @row = row
     @account_id = account_id
@@ -91,28 +77,12 @@ class RowParser
     row[2]
   end
 
-  def quantity1
-    row[3].try(:to_f)
-  end
-
-  def quantity2
-    row[4].try(:to_f)
-  end
-
   def quantity
-    if quantity1 && quantity2
-      return quantity1 if quantity1 > quantity2
-      quantity2
-    elsif quantity1.nil?
-      quantity2
-    else
-      quantity1
-    end
+    row[4].try(:to_f)
   end
 
   def item
     @item = Item.where(articul: articul).first
-    @item ||= Item.where(name: name).first
     @item ||= create_item
     @item
   end
@@ -129,15 +99,14 @@ class RowParser
   end
 
   def create_item
-    n, a = name, articul
+    n = name
     n = articul unless n.present?
-    a = n unless a.present?
-    i = Item.create(name: n, articul: a, account_id: account_id) if n.present? && a.present?
+    i = Item.create(name: n, articul: articul, account_id: account_id) if articul.present?
     puts i.errors.full_messages if i && i.errors.any?
     i
   end
 
   def info
-    "name: #{name}, articul: #{articul}, quantity: #{quantity}"
+    "articul: #{articul}, quantity: #{quantity}"
   end
 end
