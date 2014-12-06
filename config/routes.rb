@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :items do
     get :autocomplete_name, on: :collection
-    get "(:tab)" => :index, tab: /complex|basic/, on: :collection
+    get "(:tab)" => :index, tab: /complex|basic|final/, on: :collection
   end
 
   resources :invites

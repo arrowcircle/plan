@@ -44,6 +44,7 @@ class ItemsController < ApplicationController
   def scope
     return Item.for_account(account.id).complex(account.id) if params[:tab] == 'complex'
     return Item.for_account(account.id).basic(account.id) if params[:tab] == 'basic'
+    return Item.for_account(account.id).final(account.id) if params[:tab] == 'final'
     Item.for_account(account.id)
   end
 
