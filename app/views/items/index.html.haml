@@ -1,6 +1,6 @@
 .row
   .col-lg-4
-    %span.header Изделия
+    %span.header Изделия (#{@items.total_count})
   .col-lg-4
     = form_tag url_for(params.except(:search, :utf8, :commit)), method: :get do
       .input-group
