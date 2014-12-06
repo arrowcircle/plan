@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20141204213638) do
   create_table "itemizations", force: true do |t|
     t.integer  "item_id"
     t.integer  "parent_id"
-    t.integer  "quantity"
+    t.float    "quantity"
     t.integer  "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

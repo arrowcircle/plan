@@ -14,11 +14,11 @@ describe Item do
     it 'возвращает плоский массив для 2х элементов' do
       Itemization.create(parent_id: parent.id, item_id: item.id, quantity: 1, account_id: parent.account_id)
       Itemization.create(parent_id: parent.id, item_id: subitem.id, quantity: 2, account_id: parent.account_id)
-      expect(parent.tree.keys).to eq [1, 2]
+      expect(parent.tree.values).to eq [1.0, 2.0]
     end
 
     it 'выводит список компонентов для корня' do
-      expect(root.tree.keys).to eq [2, 4, 1]
+      expect(root.tree.values).to eq [2.0, 4.0, 1.0]
     end
   end
 

@@ -23,7 +23,7 @@
         %th Артикул
         %th Количество
     %tbody
-      - @item.tree.each do |quantity, item|
+      - @item.tree.each do |item, quantity|
         %tr
           %td= link_to item.name, item
           %td= quantity
