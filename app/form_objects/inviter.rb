@@ -28,7 +28,10 @@ class Inviter
 
   def create_invites
     invite_emails.each do |email|
-      Invite.create(email: email, account_id: account_id) unless Invite.inactive.where(email: email, account_id: account_id).any?
+      unless Invite.inactive.where(email: email, account_id: account_id).any?
+        inv = Invite.create(email: email, account_id: account_id)
+        InviteMailer.welcome_invite(inv.id).deliver_later
+      end
     end
   end
 

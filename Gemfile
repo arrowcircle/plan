@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
+  gem 'letter_opener'
   gem 'launchy'
   gem 'web-console', '~> 2.0'
   gem 'rspec-rails'

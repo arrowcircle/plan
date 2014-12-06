@@ -14,4 +14,9 @@ describe Invitation do
     inv.register
     expect(AccountUser.where(account_id: invite.account_id, user_id: inv.user.id).any?).to eq true
   end
+
+  it 'удаляет инвайт' do
+    inv.register
+    expect(Invite.count).to eq 0
+  end
 end
