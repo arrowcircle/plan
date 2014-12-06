@@ -40,7 +40,7 @@ class Item < ActiveRecord::Base
     content = Item.tree_for(self).inject { |memo, el| memo.merge(el) { |k, old_v, new_v| old_v + new_v } }
     return {} if content == {} || content.nil?
     Item.where(id: content.keys.uniq, account_id: account_id).inject({}) do |memo, item|
-      memo.merge(content[item.id] => item)
+      memo.merge(item => content[item.id])
     end
   end
 end

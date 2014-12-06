@@ -25,14 +25,14 @@
     %table.table
       %thead
         %tr
-          %th Название
           %th Артикул
+          %th Название
           %th
       %tbody
         - @items.all.each do |item|
           %tr
-            %td= link_to item.name, item
             %td= link_to item.articul, item
+            %td= link_to item.name, item
             %td
               .btn-group
                 = link_to 'Ред.', [:edit, item], class: 'btn btn-default btn-sm'

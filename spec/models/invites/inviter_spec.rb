@@ -39,7 +39,8 @@ describe Inviter do
   end
 
   it 'создает инвайты' do
-    inviter = Inviter.new(emails: ['abc@test.ru'], account_id: 1)
+    user = create(:user_with_account)
+    inviter = Inviter.new(emails: ['abc@test.ru'], account_id: Account.first.id)
     inviter.invite
     expect(Invite.first.email).to eq 'abc@test.ru'
   end
