@@ -3,15 +3,15 @@
   = link_to t('back'), [:items], class: 'btn btn-default'
 
 = simple_form_for @item do |f|
-  = f.input :name
   = f.input :articul
+  = f.input :name
 
   %h3 Состоит из
   #itemizations
     = f.simple_fields_for :itemizations do |itemization|
       = render 'itemization_fields', f: itemization
     .links.row
-      = link_to_add_association 'Добавить', f, :itemizations, class: 'btn btn-default'
+      = link_to_add_association t('new'), f, :itemizations, class: 'btn btn-default'
   %br
   .row
     = f.submit t('save'), class: 'btn btn-primary'

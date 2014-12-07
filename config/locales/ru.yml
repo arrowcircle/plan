@@ -14,9 +14,11 @@ ru:
     attributes:
       account:
         name: Название
+      itemization:
+        quantity: Количество
       item:
         name: Название
-        articul: Артикул
+        articul: Код
       user:
         email: E-mail
         name: ФИО

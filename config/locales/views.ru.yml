@@ -1,9 +1,4 @@
 ru:
-  back: Назад
-  items:
-    index:
-      new: Добавить
-
   layouts:
     application:
       close: Закрыть
@@ -14,7 +9,6 @@ ru:
   invites:
     index:
       header: Пользователи
-      new: Добавить
     new:
       header: Добавить пользователей
       emails: Е-мэйл пользователя
@@ -29,6 +23,11 @@ ru:
       name: Фамилия и имя
       company: Название компании
       sign_up: Начать работу
+  short_edit: Ред.
+  delete_confirmation: Точно удалить?
+  edit: Редактировать
+  back: Назад
+  new: Добавить
   save: Сохранить
   cancel: Отменить
   delete: Удалить
