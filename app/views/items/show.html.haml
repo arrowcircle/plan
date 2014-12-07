@@ -1,8 +1,8 @@
 %h1
   = @item.name
   .btn-group
-    = link_to 'Назад', [:items], class: 'btn btn-default'
-    = link_to 'Редактировать', [:edit, @item], class: 'btn btn-primary'
+    = link_to t('back'), [:items], class: 'btn btn-default'
+    = link_to t('edit'), [:edit, @item], class: 'btn btn-primary'
 
 - if @item.children.any?
   %h2 Состоит из:
@@ -13,9 +13,9 @@
   %table.table
     %thead
       %tr
-        %th Артикул
-        %th Название
-        %th Количество
+        %th= Item.human_attribute_name(:articul)
+        %th= Item.human_attribute_name(:name)
+        %th= Itemization.human_attribute_name(:quantity)
     %tbody
       - @item.parents.each do |item|
         %tr

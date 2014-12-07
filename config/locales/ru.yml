@@ -16,7 +16,7 @@ ru:
         name: Название
       item:
         name: Название
-        articul: Артикул
+        articul: Код
       user:
         email: E-mail
         name: ФИО

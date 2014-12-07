@@ -13,7 +13,7 @@
   .col-lg-4
     = link_to [:new, :item], class: 'btn btn-primary' do
       .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
-      = t('.new')
+      = t('new')
 .row
   %ul.nav.nav-tabs
     %li{ class: "#{'active' unless params[:tab].present? }" }= link_to 'Все', [:items]
@@ -26,8 +26,8 @@
     %table.table
       %thead
         %tr
-          %th Артикул
-          %th Название
+          %th= Item.human_attribute_name(:articul)
+          %th= Item.human_attribute_name(:name)
           %th
       %tbody
         - @items.all.each do |item|
@@ -36,7 +36,7 @@
             %td= link_to item.name, item
             %td
               .btn-group
-                = link_to 'Ред.', [:edit, item], class: 'btn btn-default btn-sm'
+                = link_to t('short_edit'), [:edit, item], class: 'btn btn-default btn-sm'
                 = link_to [item], method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
                   %span.glyphicon.glyphicon-remove= t('delete')
     = paginate @items
@@ -46,4 +46,4 @@
       Начните с добавления базовых изделий. Базовые изделия являются неделимыми, из них состоят сборные изделия.
     = link_to [:new, :item], class: 'btn btn-primary' do
       .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
-      = t('.new')
+      = t('new')

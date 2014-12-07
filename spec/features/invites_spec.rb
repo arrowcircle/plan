@@ -6,7 +6,7 @@ feature 'Инвайты' do
   let(:invite) { create(:invite) }
 
   scenario 'юзер приглашает нового юзера' do
-    click_link I18n.t('invites.index.new')
+    click_link I18n.t('new')
     email = Faker::Internet.email
     find('#invite_emails', match: :first).set(email)
     click_button I18n.t('save')
@@ -15,7 +15,7 @@ feature 'Инвайты' do
 
   scenario 'юзер приглашает сушествующего юзера' do
     pending 'Поправил fill_in для поля-массива'
-    click_link I18n.t('invites.index.new')
+    click_link I18n.t('new')
     inv_user = create(:user_with_account)
     find('#invite_emails', match: :first).set(inv_user.email)
     click_button I18n.t('save')
