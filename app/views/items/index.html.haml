@@ -37,7 +37,7 @@
             %td
               .btn-group
                 = link_to t('short_edit'), [:edit, item], class: 'btn btn-default btn-sm'
-                = link_to [item], method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
+                = link_to [item], method: :delete, data: { confirm: t('delete_confirmation') }, class: 'btn btn-danger btn-sm' do
                   %span.glyphicon.glyphicon-remove= t('delete')
     = paginate @items
   - else

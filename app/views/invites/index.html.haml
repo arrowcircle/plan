@@ -18,7 +18,7 @@
         %tr
           %td= au.user.name
           %td
-            = link_to invite_path(au, invite: false), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
+            = link_to invite_path(au, invite: false), method: :delete, data: { confirm: t('delete_confirmation') }, class: 'btn btn-danger btn-sm' do
               %span.glyphicon.glyphicon-remove= t('delete')
 
 - if @invites.any?
@@ -35,5 +35,5 @@
           %td= invite.email
           %td= l invite.created_at, format: '%d, %b, %Y %H:%M'
           %td
-            = link_to invite_path(invite, invite: true), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger btn-sm' do
+            = link_to invite_path(invite, invite: true), method: :delete, data: { data: { confirm: t('delete_confirmation') } }, class: 'btn btn-danger btn-sm' do
               %span.glyphicon.glyphicon-remove= t('delete')

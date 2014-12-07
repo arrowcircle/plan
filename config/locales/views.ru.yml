@@ -24,6 +24,7 @@ ru:
       company: Название компании
       sign_up: Начать работу
   short_edit: Ред.
+  delete_confirmation: Точно удалить?
   edit: Редактировать
   back: Назад
   new: Добавить
