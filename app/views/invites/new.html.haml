@@ -6,8 +6,8 @@
 .row
 = simple_form_for @invite do |f|
   - 5.times do
-    -# = f.text_field :emails, multiple: true, placeholder: t('.emails'), autocomplete: :off
-    = f.input :emails, multiple: true, label: false, placeholder: t('.emails'), autocomplete: :off
+    .form-group
+      = f.text_field :emails, multiple: true, placeholder: t('.emails'), autocomplete: :off, class: 'form-control'
   = f.submit t('save'), class: 'btn btn-primary'
   или
   = link_to t('cancel'), [:items], class: 'btn btn-default'
