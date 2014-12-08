@@ -18,4 +18,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require cocoon
+//= require evil-blocks
 //= require_tree .
