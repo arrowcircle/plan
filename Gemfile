@@ -50,6 +50,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'rails3-jquery-autocomplete'
+gem 'evil-blocks-rails'
+gem 'role_block_haml'
 
 gem 'devise'
 gem 'devise-i18n'

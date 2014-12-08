@@ -6,7 +6,7 @@
 
 - if @item.children.any?
   %h2 Состоит из:
-  = render @item
+  = render @item, css: 'tree', evil_block: "tree"
 
 - if Itemization.where(item_id: @item.id, account_id: account.id).any?
   %h2 Участвует в:
