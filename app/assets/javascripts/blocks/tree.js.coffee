@@ -14,5 +14,6 @@ evil.block '@@tree',
       item.siblings('[data-role=item]').trigger('close')
 
   'close on @item': (e)->
+    e.stopPropagation()
     e.el.find('[data-role=trigger]').removeClass('_open')
     e.el.find('[data-role=subtree]').remove()
