@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = scope.find(params[:id])
+    render(partial: @item, locals: {evil_role: 'subtree'}) if request.xhr?
   end
 
   def destroy
