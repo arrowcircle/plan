@@ -14,7 +14,6 @@ feature 'Инвайты' do
   end
 
   scenario 'юзер приглашает сушествующего юзера' do
-    pending 'Поправил fill_in для поля-массива'
     click_link I18n.t('new')
     inv_user = create(:user_with_account)
     find('#invite_emails', match: :first).set(inv_user.email)

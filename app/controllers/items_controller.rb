@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  autocomplete :item, :name
+  autocomplete :item, :articul
+
   def index
     @items = scope.search(params[:search]).page(params[:page]).per(20)
   end
@@ -38,6 +39,10 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = scope.find(params[:id])
+  end
+
+  def autocomplete_item_articul
+    @items = Item.for_account(account.id).search(params[:term]).order(:articul).limit(10)
   end
 
   private

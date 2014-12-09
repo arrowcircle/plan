@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :items do
-    get :autocomplete_name, on: :collection
+    get :autocomplete_item_articul, on: :collection
     get "(:tab)" => :index, tab: /complex|basic|final/, on: :collection
   end
 

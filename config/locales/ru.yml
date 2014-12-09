@@ -14,6 +14,8 @@ ru:
     attributes:
       account:
         name: Название
+      itemization:
+        quantity: Количество
       item:
         name: Название
         articul: Код

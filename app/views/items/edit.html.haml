@@ -8,10 +8,10 @@
 
   %h3 Состоит из
   #itemizations
-    = f.simple_fields_for :itemizations do |itemization|
-      = render 'itemization_fields', f: itemization
+    = f.simple_fields_for :parent_itemizations do |itemization|
+      = render 'parent_itemization_fields', f: itemization
     .links.row
-      = link_to_add_association t('new'), f, :itemizations, class: 'btn btn-default'
+      = link_to_add_association t('new'), f, :parent_itemizations, class: 'btn btn-default'
   %br
   .row
     = f.submit t('save'), class: 'btn btn-primary'

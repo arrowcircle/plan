@@ -1,12 +1,14 @@
 class Itemization < ActiveRecord::Base
-  belongs_to :parent, class_name: 'Item'
-  belongs_to :item
+  belongs_to :parent, class_name: 'Item', inverse_of: :parent_itemizations
+  belongs_to :item, inverse_of: :itemizations
   belongs_to :account
 
   validates :item, :quantity, :account, presence: true
   validate :infinite_loop
 
   scope :for_account, ->(account_id) { where(account_id: account_id) }
+
+  attr_accessor :articul
 
   def to_tree
     { item.id => quantity }
