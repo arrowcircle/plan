@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   has_many :itemizations
-  has_many :parent_itemizations, foreign_key: :parent_id, class_name: 'Itemization', inverse_of: :item
+  has_many :parent_itemizations, foreign_key: :parent_id, class_name: 'Itemization'
   has_many :items, through: :itemizations
   belongs_to :account
 
@@ -11,6 +11,7 @@ class Item < ActiveRecord::Base
   scope :complex, ->(account_id) { Item.where(id: Itemization.for_account(account_id).pluck(:parent_id)) }
 
   accepts_nested_attributes_for :itemizations, allow_destroy: true
+  accepts_nested_attributes_for :parent_itemizations, allow_destroy: true
   validates :account, presence: true
 
   def self.search(q = '')
