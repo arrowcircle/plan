@@ -1,5 +1,6 @@
 .row.nested-fields.form-inline
-  = f.input :item_id, url: autocomplete_item_articul_items_path, as: :autocomplete, label: false, error: false, append_to: ".item_id"
-  = f.hidden_field :item_id, class: 'item_id'
+  .form-group.float
+    = f.autocomplete_field :articul, autocomplete_item_articul_items_path, :id_element => "#item_itemizations_attributes_#{f.index}_item_id", class: 'numeric float required form-control', value: f.object.item.articul
+    = f.text_field :item_id, class: 'item_id'
   = f.input :quantity, label: false, error: false, placeholder: Itemization.human_attribute_name(:quantity)
   = link_to_remove_association raw("<span class='glyphicon glyphicon-remove'></span>"), f

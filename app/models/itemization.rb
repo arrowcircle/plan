@@ -8,6 +8,8 @@ class Itemization < ActiveRecord::Base
 
   scope :for_account, ->(account_id) { where(account_id: account_id) }
 
+  attr_accessor :articul
+
   def to_tree
     { item.id => quantity }
   end
