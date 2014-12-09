@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
 
   def self.search(q = '')
     return Item if q && q.size < 2
-    Item.where("name ILIKE :q", q: "%#{q}%")
+    Item.where('articul ILIKE :q', q: "%#{q}%")
   end
 
   def children
