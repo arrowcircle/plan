@@ -1,6 +1,6 @@
 class Itemization < ActiveRecord::Base
-  belongs_to :parent, class_name: 'Item'
-  belongs_to :item
+  belongs_to :parent, class_name: 'Item', inverse_of: :parent_itemizations
+  belongs_to :item, inverse_of: :itemizations
   belongs_to :account
 
   validates :item, :quantity, :account, presence: true
