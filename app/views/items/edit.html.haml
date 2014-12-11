@@ -3,6 +3,10 @@
   = link_to t('back'), [:items], class: 'btn btn-default'
 
 = simple_form_for @item do |f|
+  - if @item.errors.any?
+    %ul
+      - @item.errors.full_messages.each do |error|
+        %li= error
   = f.input :articul
   = f.input :name
 

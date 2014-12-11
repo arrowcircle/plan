@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
 
   def item_params
     res = params[:item]
-    res[:itemizations_attributes].each { |k, v| v.merge!(account_id: account.id) } if res[:itemizations_attributes]
+    res[:parent_itemizations_attributes].each { |k, v| v.merge!(account_id: account.id) } if res[:parent_itemizations_attributes]
     res.permit!
   end
 end
