@@ -26,3 +26,5 @@
 /public/uploads
 /.powrc
 /.capistrano
+*.sublime-project
+*.sublime-workspace
