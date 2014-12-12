@@ -3,7 +3,5 @@
     - if itemization.item.children.any?
       %span.tree__trigger@trigger
     = link_to itemization.item do
-      = itemization.item.articul
-      - if itemization.item.name.present? && itemization.item.articul != itemization.item.name
-        = " (#{itemization.item.name})"
+      = itemization.item.full_name
     = " x #{quantity_for(itemization.quantity)}"

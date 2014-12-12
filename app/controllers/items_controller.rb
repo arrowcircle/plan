@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  autocomplete :item, :articul
+  autocomplete :item, :articul, display_value: :full_name
 
   def index
     @items = scope.search(params[:search]).page(params[:page]).per(20)
