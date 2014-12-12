@@ -45,4 +45,9 @@ class Item < ActiveRecord::Base
       memo.merge(item => content[item.id])
     end
   end
+
+  def full_name
+    return "#{articul} (#{name})" if name.present? && name != articul
+    articul
+  end
 end
