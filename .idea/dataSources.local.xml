@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - erp_test@localhost" uuid="c730f5dc-7ffa-4e68-af36-701a768cbebb">
+      <secret-storage>memory</secret-storage>
+      <schema-pattern>erp_test.*</schema-pattern>
+      <default-schemas>erp_test.*</default-schemas>
+    </data-source>
+  </component>
+</project>
