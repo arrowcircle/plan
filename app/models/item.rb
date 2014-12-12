@@ -14,6 +14,9 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :parent_itemizations, allow_destroy: true
   validates :account, presence: true
 
+  validates :articul, uniqueness: { case_sensitive: false, scope: :account_id }, presence: true
+  validates :name, presence: true
+
   def self.search(q = '')
     return Item if q && q.size < 2
     Item.where("articul ILIKE :q OR name ILIKE :q", q: "%#{q}%")
