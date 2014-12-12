@@ -16,7 +16,6 @@
 //= require autocomplete-rails
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require cocoon
 //= require autocomplete
 //= require evil-blocks
