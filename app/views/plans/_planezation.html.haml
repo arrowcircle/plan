@@ -1,0 +1,9 @@
+%tr
+  %td= link_to planezation.item.articul, planezation.item
+  %td= link_to planezation.item.name, planezation.item
+  %td
+  %td= quantity_for(planezation.quantity)
+
+- planezation.item.tree.each do |item, quantity|
+  %td
+    = render partial: "item", locals: { item: item, quantity: quantity, plan_quantity: planezation.quantity}

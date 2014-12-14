@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     get "(:tab)" => :index, tab: /complex|basic|final/, on: :collection
   end
 
+  resources :plans do
+    get :autocomplete_item_articul, on: :collection
+  end
+
   resources :invites
   resources :plans
   resources :registrations
