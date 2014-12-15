@@ -2,7 +2,7 @@
   %td= link_to item.articul, item
   %td= link_to item.name, item
   %td= quantity_for(quantity)
-  %td= quantity_for(plan_quantity)
+  %td= quantity_for(plan_quantity*quantity)
 
 - item.tree.each do |item, quantity|
   %td
