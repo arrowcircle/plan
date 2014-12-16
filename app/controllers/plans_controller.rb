@@ -1,6 +1,4 @@
 class PlansController < ApplicationController
-  autocomplete :item, :articul, display_value: :full_name
-
   def index
     @plans = scope.search(params[:search]).page(params[:page]).per(20)
   end
@@ -40,10 +38,6 @@ class PlansController < ApplicationController
     @plan = scope.find(params[:id])
     @plan.destroy!
     redirect_to :back, notice: "План удален"
-  end
-
-  def autocomplete_item_articul
-    @items = Item.for_account(account.id).search(params[:term]).order(:articul).limit(10)
   end
 
   private
