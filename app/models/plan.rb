@@ -17,6 +17,6 @@ class Plan < ActiveRecord::Base
   end
 
   def plan
-    Plan::Calculator.new(self).plan
+    Plan::Calculator.new(self).plans
   end
 end

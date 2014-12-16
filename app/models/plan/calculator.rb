@@ -1,15 +1,15 @@
 class Plan::Calculator
-
+  attr_accessor :plan, :result
   def initialize(plan)
     @plan = plan
     @result = Hash.new
   end
 
-  def plan
-    @plan.planezations.each do |planezation|
+  def plans
+    plan.planezations.each do |planezation|
       process(planezation)
     end
-    @result
+    result
   end
 
   def process(planezation)
@@ -21,7 +21,7 @@ class Plan::Calculator
         treehash[key] = value * planezation.quantity
       end
     end
-    @result.merge!(treehash) do |key, oldval, newval|
+    result.merge!(treehash) do |key, oldval, newval|
       oldval + newval
     end
   end
