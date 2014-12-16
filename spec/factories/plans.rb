@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :plan do
-    name "MyString"
-status 1
+    name { Faker::Product.product_name }
+    account
   end
 
 end

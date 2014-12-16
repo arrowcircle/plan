@@ -12,9 +12,8 @@
         %th= Item.human_attribute_name(:name)
         %th= Itemization.human_attribute_name(:quantity)
     %tbody
-      - Plan.list(@plan).each do |item,quantity|
+      - @plan.plan.each do |item, quantity|
         %tr
           %td= link_to item.articul, item
           %td= link_to item.name, item
           %td= quantity_for(quantity)
-
