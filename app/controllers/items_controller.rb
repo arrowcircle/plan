@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = scope.find(params[:id])
+    redirect_to items_path, notice: 'Изделие удалено'
   end
 
   def autocomplete_item_articul
