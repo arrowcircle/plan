@@ -14,12 +14,7 @@
     = link_to [:new, :item], class: 'btn btn-primary' do
       .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
       = t('new')
-.row
-  %ul.nav.nav-tabs
-    %li{ class: "#{'active' unless params[:tab].present? }" }= link_to 'Все', [:items]
-    %li{ class: "#{'active' if params[:tab] == 'basic' }" }= link_to 'Базовые', '/items/basic'
-    %li{ class: "#{'active' if params[:tab] == 'complex' }" }= link_to 'Сборные', '/items/complex'
-    %li{ class: "#{'active' if params[:tab] == 'final' }" }= link_to 'Конечные', '/items/final'
+= render 'tabs'
 
 .row
   - if @items.any?

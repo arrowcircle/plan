@@ -1,0 +1,12 @@
+.row
+  .col-lg-4
+    %span.header Изделия
+  .col-lg-4
+    = link_to [:new, :item], class: 'btn btn-primary' do
+      .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
+      = t('new')
+= render 'tabs'
+
+%ul
+  - @categories.each do |c|
+    %li= link_to c.name, tree_items_path(category_id: c.id)
