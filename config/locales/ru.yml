@@ -1,36 +1,43 @@
 ru:
   activemodel:
     attributes:
-      registration:
-        name: ФИО
-        company: Название компании
-        email: E-mail
-        password: Пароль
       invite:
         name: ФИО
         password: Пароль
-
+      registration:
+        company: Название компании
+        email: E-mail
+        name: ФИО
+        password: Пароль
   activerecord:
     attributes:
       account:
         name: Название
+      category:
+        name: Название
+        parent_id: Родительская категория
+        type: Тип категории
+      item:
+        articul: Код
+        category: Категория
+        name: Название
       itemization:
         quantity: Количество
-      item:
-        name: Название
-        articul: Код
       user:
         email: E-mail
         name: ФИО
         password: Пароль
         remember_me: Запомнить?
-
     models:
       account:
-        one: Компания
         acc: компанию
+        one: Компания
         other: Компании
+      category:
+        acc: категорию
+        one: Категори
+        other: Категории
       user:
-        one: Пользователь
         acc: пользователя
+        one: Пользователь
         other: Пользователи

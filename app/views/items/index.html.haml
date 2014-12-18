@@ -27,13 +27,13 @@
       %thead
         %tr
           %th= Item.human_attribute_name(:articul)
-          %th= Item.human_attribute_name(:name)
+          %th= Item.human_attribute_name(:category)
           %th
       %tbody
         - @items.all.each do |item|
           %tr
-            %td= link_to item.articul, item
-            %td= link_to item.name, item
+            %td= link_to item.full_name, item
+            %td= item.category.try(:name) || 'Без категории'
             %td
               .btn-group
                 = link_to t('short_edit'), [:edit, item], class: 'btn btn-default btn-sm'

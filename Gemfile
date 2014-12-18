@@ -37,6 +37,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'ffaker'
   gem 'capybara'
+  gem 'i18n_yaml_sorter'
 end
 
 gem 'haml-rails'
@@ -57,6 +58,8 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 gem 'bcrypt'
+
+gem 'ancestry'
 
 gem 'dalli'
 gem 'rack-mini-profiler', group: :development

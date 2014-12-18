@@ -26,6 +26,7 @@
           - if user_signed_in?
             %ul.nav.navbar-nav
               %li{ class: active?('items') }= link_to t('catalog'), items_path
+              %li{ class: active?('categories') }= link_to t('categories'), categories_path
               %li{ class: active?('plans') }= link_to t('plans'), plans_path
               %li{ class: active?('main', action_name == 'guide') }= link_to t('.guide'), guide_path
               - if owner?
@@ -76,7 +77,7 @@
                 %li= link_to "Link 1", "/path1"
                 %li= link_to "Link 2", "/path2"
                 %li= link_to "Link 3", "/path3"
-                
+
     %footer.container
       %p
         &copy; #{t('title')} Сделано

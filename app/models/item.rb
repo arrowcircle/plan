@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
   has_many :parent_itemizations, foreign_key: :parent_id, class_name: 'Itemization'
   has_many :items, through: :itemizations
   belongs_to :account
+  belongs_to :category
 
   scope :for_account, ->(account_id) { where(account_id: account_id) }
   scope :basic, ->(account_id) { where.not(id: Itemization.for_account(account_id).pluck(:parent_id).uniq) }
@@ -12,10 +13,12 @@ class Item < ActiveRecord::Base
 
   accepts_nested_attributes_for :itemizations, allow_destroy: true
   accepts_nested_attributes_for :parent_itemizations, allow_destroy: true
-  validates :account, presence: true
 
+  validates :account, presence: true
   validates :articul, uniqueness: { case_sensitive: false, scope: :account_id }, presence: true
   validates :name, presence: true
+
+  before_save :set_position
 
   def self.search(q = '')
     return Item if q && q.size < 2
@@ -52,5 +55,10 @@ class Item < ActiveRecord::Base
   def full_name
     return "#{articul} (#{name})" if name.present? && name != articul
     articul
+  end
+
+  def set_position
+    return true unless category_id.present?
+    category.set_position(self)
   end
 end

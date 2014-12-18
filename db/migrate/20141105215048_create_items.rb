@@ -5,6 +5,8 @@ class CreateItems < ActiveRecord::Migration
       t.string :articul, null: false
       t.string :type
       t.integer :account_id, null: false, index: true
+      t.integer :category_id, index: true
+      t.integer :position
 
       t.timestamps null: false
     end

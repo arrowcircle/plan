@@ -7,6 +7,7 @@
     %ul
       - @item.errors.full_messages.each do |error|
         %li= error
+  = f.association :category
   = f.input :articul
   = f.input :name
 

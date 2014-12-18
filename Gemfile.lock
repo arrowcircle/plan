@@ -37,6 +37,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
     arel (6.0.0)
     autoprefixer-rails (4.0.1.1)
       execjs
@@ -128,6 +130,7 @@ GEM
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.7.0.beta1)
+    i18n_yaml_sorter (0.2.0)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -299,6 +302,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ancestry
   autoprefixer-rails
   bcrypt
   bootstrap-sass
@@ -318,6 +322,7 @@ DEPENDENCIES
   ffaker
   guard-rspec
   haml-rails
+  i18n_yaml_sorter
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
