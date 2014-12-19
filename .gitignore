@@ -29,3 +29,6 @@
 /.capistrano
 *.sublime-project
 *.sublime-workspace
+
+
+.idea/

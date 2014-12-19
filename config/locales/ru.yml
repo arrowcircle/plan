@@ -19,6 +19,11 @@ ru:
       item:
         name: Название
         articul: Код
+      plan:
+        name: Название
+        status: Статус
+      planezation:
+        quantity: Количество
       user:
         email: E-mail
         name: ФИО

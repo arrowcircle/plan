@@ -1,0 +1,22 @@
+%h1
+  Редактирование плана
+  = link_to t('back'), [:items], class: 'btn btn-default'
+
+= simple_form_for @plan do |f|
+  - if @plan.errors.any?
+    %ul
+      - @plan.errors.full_messages.each do |error|
+        %li= error
+  = f.input :name
+
+  %h3 Состоит из
+  #planezations
+    = f.simple_fields_for :planezations do |planezation|
+      = render 'planezation_fields', f: planezation
+    .links.row
+      = link_to_add_association t('new'), f, :planezations, class: 'btn btn-default'
+  %br
+  .row
+    = f.submit t('save'), class: 'btn btn-primary'
+    или
+    = link_to t('cancel'), [:plans], class: 'btn btn-default'
