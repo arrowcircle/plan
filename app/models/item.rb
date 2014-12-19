@@ -2,6 +2,8 @@ class Item < ActiveRecord::Base
   has_many :itemizations
   has_many :parent_itemizations, foreign_key: :parent_id, class_name: 'Itemization'
   has_many :items, through: :itemizations
+  has_many :plans, through: :planezations
+  has_many :planezations
   belongs_to :account
   belongs_to :category
 

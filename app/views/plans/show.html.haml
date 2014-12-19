@@ -1,0 +1,18 @@
+%h1
+  = @plan.name
+  .btn-group
+    = link_to t('back'), [:items], class: 'btn btn-default'
+    = link_to t('edit'), [:edit, @plan], class: 'btn btn-primary'
+  %h2 Состоит из:
+  %table.table
+    %thead
+      %tr
+        %th= Item.human_attribute_name(:articul)
+        %th= Item.human_attribute_name(:name)
+        %th= Itemization.human_attribute_name(:quantity)
+    %tbody
+      - @plan.plan.each do |item, quantity|
+        %tr
+          %td= link_to item.articul, item
+          %td= link_to item.name, item
+          %td= quantity_for(quantity)
