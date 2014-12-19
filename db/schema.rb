@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214083915) do
+ActiveRecord::Schema.define(version: 20141218204138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(version: 20141214083915) do
   end
 
   add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "account_id"
+    t.string   "type"
+    t.string   "ancestry"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "categories", ["account_id"], name: "index_categories_on_account_id", using: :btree
+  add_index "categories", ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  add_index "categories", ["type", "id"], name: "index_categories_on_type_and_id", using: :btree
 
   create_table "invites", force: true do |t|
     t.integer  "account_id",   null: false
@@ -63,16 +77,19 @@ ActiveRecord::Schema.define(version: 20141214083915) do
   add_index "itemizations", ["parent_id"], name: "index_itemizations_on_parent_id", using: :btree
 
   create_table "items", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "articul",    null: false
+    t.string   "name",        null: false
+    t.string   "articul",     null: false
     t.string   "type"
-    t.integer  "account_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "account_id",  null: false
+    t.integer  "category_id"
+    t.integer  "position"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "plan_id"
   end
 
   add_index "items", ["account_id"], name: "index_items_on_account_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["type", "id"], name: "index_items_on_type_and_id", using: :btree
 
   create_table "planezations", force: true do |t|
