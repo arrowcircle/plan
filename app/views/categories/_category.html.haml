@@ -1,0 +1,8 @@
+%li.sort-tree{id: "list_#{category.id}"}
+  .sort-tree__wrap
+    = link_to category.name, [:edit, category]
+    %p
+      = link_to [category], method: :delete, data: { confirm: t('delete_confirmation') }, class: 'btn btn-danger btn-sm' do
+        %span.glyphicon.glyphicon-remove= t('delete')
+  - if category.has_children?
+    %ol= render partial: 'category', collection: category.children.order(:position), as: :category

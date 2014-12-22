@@ -5,6 +5,8 @@ class Category < ActiveRecord::Base
 
   has_ancestry
 
+  scope :for_account, ->(account_id) { where(account_id: account_id) }
+
   validates :name, presence: true
 
   before_destroy :check_children

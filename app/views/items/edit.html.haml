@@ -7,7 +7,7 @@
     %ul
       - @item.errors.full_messages.each do |error|
         %li= error
-  = f.association :category
+  = f.input :category_id, collection: ancestry_options(Category.arrange(order: 'position')) { |i| i.name }
   = f.input :articul
   = f.input :name
 

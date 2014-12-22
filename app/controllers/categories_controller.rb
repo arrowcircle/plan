@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = scope.order(:position)
+    @categories = Category.for_account(account.id).roots.order(:position)
   end
 
   def new

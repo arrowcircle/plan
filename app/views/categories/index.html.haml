@@ -7,20 +7,10 @@
       = t('new')
 .row
   - if @categories.any?
-    %table.table
-      %thead
-        %tr
-          %th= Item.human_attribute_name(:name)
-          %th
-      %tbody
-        - @categories.all.each do |category|
-          %tr
-            %td= link_to category.name, [:edit, category]
-            %td
-              .btn-group
-                = link_to t('short_edit'), [:edit, category], class: 'btn btn-default btn-sm'
-                = link_to [category], method: :delete, data: { confirm: t('delete_confirmation') }, class: 'btn btn-danger btn-sm' do
-                  %span.glyphicon.glyphicon-remove= t('delete')
+    - cache [Category.maximum(:updated_at).to_i] do
+      %ol.sortable= render partial: 'category', collection: @categories, as: :category
+
+    = sortable sort_categories_path
   - else
     %h2 Вы пока не добавили ни одной категории
     %p

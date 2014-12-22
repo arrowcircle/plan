@@ -19,7 +19,7 @@ ru:
         type: Тип категории
       item:
         articul: Код
-        category: Категория
+        category_id: Категория
         name: Название
       itemization:
         quantity: Количество
