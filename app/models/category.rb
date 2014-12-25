@@ -9,8 +9,6 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true
 
-  before_destroy :check_children
-
   def destroy
     self.errors.add(:base, 'Невозможно удалить корневую категорию с наследниками') if children.any?
     if errors.blank?

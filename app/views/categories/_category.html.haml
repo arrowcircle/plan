@@ -1,4 +1,5 @@
 %li
   = link_to category.name, [:edit, category]
+  = link_to '×', [category], method: :delete, data: { confirm: t('delete_confirmation') }
   - if category.has_children?
     %ul= render partial: 'category', collection: category.children.order(:position), as: :category

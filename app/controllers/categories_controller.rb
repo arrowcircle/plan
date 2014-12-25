@@ -19,9 +19,15 @@ class CategoriesController < ApplicationController
   def create
     @category = scope.build(category_params)
     if @category.save
-      redirect_to [:categories], notice: 'Категория добавлена'
+      respond_to do |format|
+        format.html { redirect_to [:categories], notice: 'Категория добавлена' }
+        format.js { render 'create', layout: false }
+      end
     else
-      render 'edit'
+      respond_to do |format|
+        format.html { render 'edit' }
+        format.js { render 'new', layout: false }
+      end
     end
   end
 
@@ -38,7 +44,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @category = scope.find(params[:id])
     if @category.destroy
       redirect_to [:categories], notice: 'Категория удалена'

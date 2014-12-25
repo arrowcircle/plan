@@ -1,4 +1,16 @@
 module CategoriesHelper
+  def categories_options_for_select
+    options_for_select(
+      arranged_categories,
+      selected: @category.id)
+  end
+
+  def arranged_categories
+    ancestry_options(Category.arrange(order: 'position')) { |category| category.name }
+  end
+
+  # ancestry_options(Category.arrange(order: 'position')) { |i| i.name }
+
   def ancestry_options(items, &block)
     result = []
     items.map do |item, sub_items|

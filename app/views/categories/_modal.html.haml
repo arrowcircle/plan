@@ -1,7 +1,7 @@
 .modal.fade#categories_form
   .modal-dialog
     .modal-content
-      = simple_form_for @category do |f|
+      = simple_form_for @category, remote: true do |f|
         .modal-header
           %button.close{"aria-label" => "Закрыть", "data-dismiss" => "modal", :type => "button"}
             %span{"aria-hidden" => "true"} ×

@@ -22,7 +22,7 @@
       %thead
         %tr
           %th= Item.human_attribute_name(:articul)
-          %th= Item.human_attribute_name(:category)
+          %th= Item.human_attribute_name(:category_id)
           %th
       %tbody
         - @items.all.each do |item|
