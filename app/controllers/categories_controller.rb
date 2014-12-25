@@ -10,7 +10,10 @@ class CategoriesController < ApplicationController
 
   def new
     @category = scope.build
-    render 'edit'
+    respond_to do |format|
+      format.html { render 'edit' }
+      format.js { render 'new', layout: false }
+    end
   end
 
   def create

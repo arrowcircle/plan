@@ -8,7 +8,7 @@
 .row
   - if @categories.any?
     - cache [Category.maximum(:updated_at).to_i] do
-      %ol.sortable= render partial: 'category', collection: @categories, as: :category
+      %ul= render partial: 'category', collection: @categories, as: :category
 
     = sortable sort_categories_path
   - else

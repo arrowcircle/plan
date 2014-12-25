@@ -2,17 +2,4 @@
   Редактирование категории
   = link_to t('back'), [:categories], class: 'btn btn-default'
 
-= simple_form_for @category do |f|
-  - if @category.errors.any?
-    %ul
-      - @category.errors.full_messages.each do |error|
-        %li= error
-  = f.input :type, collection: [['Обычная', nil], ['Для сборок', 'Category::Complex']], include_blank: false
-  = f.input :name
-  = f.input :parent_id, collection: ancestry_options(Category.arrange(order: 'position')) { |i| i.name }, as: :select, include_blank: 'Корневая'
-
-  %br
-  .row
-    = f.submit t('save'), class: 'btn btn-primary'
-    или
-    = link_to t('cancel'), [:categories], class: 'btn btn-default'
+= render 'form'

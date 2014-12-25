@@ -8,6 +8,7 @@
       - @item.errors.full_messages.each do |error|
         %li= error
   = f.input :category_id, collection: ancestry_options(Category.arrange(order: 'position')) { |i| i.name }
+  = link_to t('new'), new_category_path, class: 'btn btn-default', data: { remote: true }
   = f.input :articul
   = f.input :name
 
