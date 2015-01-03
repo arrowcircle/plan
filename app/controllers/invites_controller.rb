@@ -45,7 +45,7 @@ class InvitesController < ApplicationController
       AccountUser.where(account_id: account.id).where.not(user_id: current_user.id).find(params[:id])
     end
     @invite.destroy if @invite
-    redirect_to [:invites]
+    redirect_to [:invites], notice: 'Приглашение отозвано'
   end
 
   private

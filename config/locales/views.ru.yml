@@ -12,6 +12,11 @@ ru:
     new:
       emails: Е-мэйл пользователя
       header: Добавить пользователей
+  items:
+    sidebar:
+      categories: Категории
+      sort: Сортировка
+      view: Просмотр
   layouts:
     application:
       close: Закрыть

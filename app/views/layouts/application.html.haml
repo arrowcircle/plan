@@ -26,7 +26,6 @@
           - if user_signed_in?
             %ul.nav.navbar-nav
               %li{ class: active?('items') }= link_to t('catalog'), items_path
-              %li{ class: active?('categories') }= link_to t('categories'), categories_path
               %li{ class: active?('plans') }= link_to t('plans'), plans_path
               %li{ class: active?('main', action_name == 'guide') }= link_to t('.guide'), guide_path
               - if owner?
@@ -54,6 +53,8 @@
     .container
       .row
         - klass = yield(:sidebar).present? ? 9 : 12
+        - if yield(:sidebar).present?
+          .col-lg-3= yield :sidebar
         %div{ class: "col-lg-#{klass}" }
           - if notice.present?
             .alert.alert-success.alert-dismissible{ role: :alert }
@@ -68,15 +69,6 @@
                 %span.sr-only= t('.close')
               = alert
           = yield
-        - if yield(:sidebar).present?
-          .col-lg-3
-            .well.sidebar-nav
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
 
     %footer.container
       %p

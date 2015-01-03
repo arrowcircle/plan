@@ -1,0 +1,5 @@
+- content_for :sidebar do
+  %ul.nav.nav-stacked.nav-pills
+    %li{ role: :presentation, class: ["#{'active' if controller_name == 'items'}"] }= link_to t('.view'), [:items]
+    %li{ role: :presentation, class: ["#{'active' if controller_name == 'categories'}"] }= link_to t('.categories'), [:categories]
+    %li{ role: :presentation }= link_to t('.sort'), '#'
