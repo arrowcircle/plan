@@ -2,17 +2,8 @@ class ItemsController < ApplicationController
   autocomplete :item, :articul, display_value: :full_name
 
   def tree
-    if params[:category_id].present?
-      @category = account.categories.find(params[:category_id])
-      @categories = @category.children.order(:position)
-    else
-      @categories = Category.roots.order(:position)
-    end
-    if @category
-      @items = @category.items.order(:position)
-    else
-      @items = Item.none
-    end
+    @object = params[:object_type].constantize.find(params[:object_id]) if params[:object_type] && params[:object_id]
+    @objects = children_for(@object)
   end
 
   def index
@@ -61,6 +52,12 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def children_for(obj = nil)
+    return Category.for_account(account.id).roots.order(:position) if obj.nil?
+    return obj.children.order(:position) + obj.items unless obj.is_a?(Item)
+    obj.children
+  end
 
   def scope
     return Item.for_account(account.id).complex(account.id) if params[:tab] == 'complex'

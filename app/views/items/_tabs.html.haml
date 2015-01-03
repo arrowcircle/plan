@@ -4,4 +4,3 @@
     %li{ class: "#{'active' if params[:tab] == 'basic' }" }= link_to 'Базовые', '/items/basic'
     %li{ class: "#{'active' if params[:tab] == 'complex' }" }= link_to 'Сборные', '/items/complex'
     %li{ class: "#{'active' if params[:tab] == 'final' }" }= link_to 'Конечные', '/items/final'
-    %li{ class: "#{'active' if action_name == 'tree' }" }= link_to 'По категориям', '/items/tree'

@@ -27,8 +27,15 @@ class Item < ActiveRecord::Base
     Item.where("articul ILIKE :q OR name ILIKE :q", q: "%#{q}%")
   end
 
+  def children_count
+    Itemization.where(parent_id: id, account_id: account_id).count
+  end
+
   def children
-    Itemization.joins('left join items on items.id = itemizations.item_id').where(parent_id: id, account_id: account_id).group('itemizations.id')
+    Itemization.select("itemizations.*, count(children) as children_count")
+    .joins('left join items on items.id = itemizations.item_id')
+    .joins('left join itemizations as children on children.parent_id = items.id')
+    .where(parent_id: id, account_id: account_id).group('itemizations.id').order('children_count DESC')
   end
 
   def parents
@@ -38,7 +45,7 @@ class Item < ActiveRecord::Base
   def self.tree_for(item)
     item.children.includes(:item).inject([]) do |memo, child|
       item = child.item
-      if item.children.any?
+      if item.children_count > 0
         memo += Item.tree_for(item) * child.quantity
       else
         memo += [child.to_tree]
