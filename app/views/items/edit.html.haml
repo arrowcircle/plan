@@ -2,13 +2,16 @@
   Редактирование номенклатуры
   = link_to t('back'), [:items], class: 'btn btn-default'
 
-= simple_form_for @item do |f|
+= simple_form_for @item, wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
   - if @item.errors.any?
     %ul
       - @item.errors.full_messages.each do |error|
         %li= error
-  = f.input :category_id, collection: ancestry_options(Category.arrange(order: 'position')) { |i| i.name }
-  = link_to t('new'), new_category_path, class: 'btn btn-default', data: { remote: true }
+  .form-group.form-inline
+    = f.label :category_id, class: "string required col-sm-3 control-label"
+    .col-sm-9
+      = f.input :category_id, collection: ancestry_options(Category.arrange(order: 'position')) { |i| i.name }, label: false
+      = link_to t('new'), new_category_path, class: 'btn btn-default', data: { remote: true }
   = f.input :articul
   = f.input :name
 
@@ -16,7 +19,7 @@
   #itemizations
     = f.simple_fields_for :parent_itemizations do |itemization|
       = render 'parent_itemization_fields', f: itemization
-    .links.row
+    .links
       = link_to_add_association t('new'), f, :parent_itemizations, class: 'btn btn-default'
   %br
   .row

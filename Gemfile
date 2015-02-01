@@ -77,7 +77,6 @@ gem 'capistrano-rvm'
 gem 'capistrano-db-tasks', require: false
 
 gem 'utf8-cleaner'
-
 gem 'simple_xlsx_reader'
 
 # Use debugger
