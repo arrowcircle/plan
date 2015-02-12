@@ -3,8 +3,10 @@
 
 $ ->
   $('ol.sortable').nestedSortable
-    disableNesting: 'no-nest'
+    # disableNesting: 'no-nest'
     forcePlaceholderSize: true
+    disableParentChange: false
+    isTree: true
     handle: 'div'
     helper: 'clone'
     items: 'li'
