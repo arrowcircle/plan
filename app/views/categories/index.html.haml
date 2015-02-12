@@ -8,10 +8,8 @@
       = t('new')
 .row
   - if @categories.any?
-    - cache [Category.maximum(:updated_at).to_i] do
-      %ul= render partial: 'category', collection: @categories, as: :category
-
-    = sortable sort_categories_path
+    - cache [Category.count, Category.maximum(:updated_at).try(:to_i)] do
+      %ol.sortable= render partial: 'category', collection: @categories, as: :category
   - else
     %h2 Вы пока не добавили ни одной категории
     %p

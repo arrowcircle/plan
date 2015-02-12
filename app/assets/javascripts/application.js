@@ -19,4 +19,5 @@
 //= require cocoon
 //= require autocomplete
 //= require evil-blocks
+//= require nested_sortable
 //= require_tree .

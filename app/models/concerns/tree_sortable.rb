@@ -18,10 +18,10 @@ module TreeSortable
         if parent == 'root'
           pid = nil
         else
-          pid = self.class.find(parent).id
+          pid = self.find(parent).id
         end
         cats.each do |cat|
-          self.class.find(cat).update(parent_id: pid, position: i)
+          self.find(cat).update(parent_id: pid, position: i)
           i += 1
         end
       end
