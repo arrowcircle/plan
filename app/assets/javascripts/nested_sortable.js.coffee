@@ -10,7 +10,7 @@ $ ->
     handle: 'div'
     helper: 'clone'
     items: 'li'
-    maxLevels: 2
+    maxLevels: 0
     opacity: .6
     placeholder: 'placeholder'
     revert: 250
