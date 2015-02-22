@@ -1,4 +1,5 @@
 # Производственный план онлайн
+[![Build Status](https://travis-ci.org/arrowcircle/plan.svg?branch=master)](https://travis-ci.org/arrowcircle/plan)
 [http://plan.redde.ru](http://plan.redde.ru/)
 
 Простейшая erp система, позволяющая планировать производство.
