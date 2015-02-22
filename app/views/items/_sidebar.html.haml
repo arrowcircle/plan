@@ -2,4 +2,4 @@
   %ul.nav.nav-stacked.nav-pills
     %li{ role: :presentation, class: ["#{'active' if controller_name == 'items' && action_name != 'tree'}"] }= link_to t('.view'), [:items]
     %li{ role: :presentation, class: ["#{'active' if controller_name == 'categories'}"] }= link_to t('.categories'), [:categories]
-    %li{ role: :presentation, class: ["#{'active' if action_name == 'tree'}"] }= link_to 'Дерево', [:tree, :items]
+    -# %li{ role: :presentation, class: ["#{'active' if action_name == 'tree'}"] }= link_to 'Дерево', [:tree, :items]

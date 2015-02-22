@@ -16,7 +16,7 @@ ru:
     sidebar:
       categories: Категории
       sort: Сортировка
-      view: Просмотр
+      view: Изделия
   layouts:
     application:
       close: Закрыть

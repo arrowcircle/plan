@@ -15,14 +15,20 @@
   = f.input :articul
   = f.input :name
 
-  %h3 Состоит из
+  .form-group
+    %label.col-sm-3
+    .col-sm-9
+      %h3 Состоит из
   #itemizations
     = f.simple_fields_for :parent_itemizations do |itemization|
       = render 'parent_itemization_fields', f: itemization
-    .links
+    .col-sm-5.links
       = link_to_add_association t('new'), f, :parent_itemizations, class: 'btn btn-default'
   %br
   .row
-    = f.submit t('save'), class: 'btn btn-primary'
-    или
-    = link_to t('cancel'), [:items], class: 'btn btn-default'
+  .form-group
+    .col-sm-3
+    .col-sm-9
+      = f.submit t('save'), class: 'btn btn-primary'
+      или
+      = link_to t('cancel'), [:items], class: 'btn btn-default'
