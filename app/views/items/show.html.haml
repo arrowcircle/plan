@@ -4,7 +4,7 @@
     = link_to t('back'), [:items], class: 'btn btn-default'
     = link_to t('edit'), [:edit, @item], class: 'btn btn-primary'
 
-- if @item.children.any?
+- if @item.children_count > 0
   %h2 Состоит из:
   = render @item, css: 'tree', evil_block: "tree"
 

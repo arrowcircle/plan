@@ -1,6 +1,7 @@
 //= require_self
 //= require jquery-ui/autocomplete
 //= require_tree ./blocks
+//= require categories
 
 @import bootstrap-sprockets
 @import bootstrap
@@ -12,6 +13,8 @@ body
   min-height: 100%
   display: flex
   flex-direction: column
+  > .container-fluid
+    width: 100%
 
 span.header
   font-size: 28px

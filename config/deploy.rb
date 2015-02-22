@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 require 'capistrano-db-tasks'
 
-lock '3.3.3'
+lock '3.3.5'
 
 set :application, 'plan'
 set :repo_url, 'https://github.com/arrowcircle/plan.git'

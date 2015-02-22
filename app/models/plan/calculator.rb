@@ -1,5 +1,6 @@
 class Plan::Calculator
   attr_accessor :plan, :result
+
   def initialize(plan)
     @plan = plan
     @result = Hash.new

@@ -1,0 +1,19 @@
+.modal.fade#categories_form
+  .modal-dialog
+    .modal-content
+      = simple_form_for @category, remote: true do |f|
+        .modal-header
+          %button.close{"aria-label" => "Закрыть", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4.modal-title Добавление категории
+        .modal-body
+          - if @category.errors.any?
+            %ul
+              - @category.errors.full_messages.each do |error|
+                %li= error
+          = f.input :type, collection: [['Обычная', nil], ['Для сборок', 'Category::Complex']], include_blank: false
+          = f.input :name
+          = f.input :parent_id, collection: ancestry_options(Category.arrange(order: 'position')) { |i| i.name }, as: :select, include_blank: 'Корневая'
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= t('cancel')
+          = f.submit t('save'), class: 'btn btn-primary'

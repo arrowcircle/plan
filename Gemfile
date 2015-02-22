@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0rc2'
+gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -37,6 +37,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'ffaker'
   gem 'capybara'
+  gem 'i18n_yaml_sorter'
 end
 
 gem 'haml-rails'
@@ -58,6 +59,8 @@ gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 gem 'bcrypt'
 
+gem 'ancestry'
+
 gem 'dalli'
 gem 'rack-mini-profiler', group: :development
 
@@ -74,7 +77,6 @@ gem 'capistrano-rvm'
 gem 'capistrano-db-tasks', require: false
 
 gem 'utf8-cleaner'
-
 gem 'simple_xlsx_reader'
 
 # Use debugger

@@ -1,6 +1,9 @@
-.row.nested-fields.form-inline
-  .form-group.float
-    = f.autocomplete_field :articul, autocomplete_item_articul_items_path, id_element: "[name='#{f.object_name}[item_id]']", class: 'numeric float required form-control', value: f.object.try(:item).try(:full_name)
+.nested-fields.form-inline
+  %label.col-sm-3
+  .col-sm-9
+    = f.autocomplete_field :articul, autocomplete_item_articul_items_path, id_element: "[name='#{f.object_name}[item_id]']", class: 'numeric float required form-control', value: f.object.try(:item).try(:full_name), placeholder: 'Введите артикул', size: 60
     = f.hidden_field :item_id
-  = f.input :quantity, label: false, error: false, placeholder: Itemization.human_attribute_name(:quantity)
-  = link_to_remove_association raw("<span class='glyphicon glyphicon-remove'></span>"), f
+    x
+    = f.text_field :quantity, placeholder: Itemization.human_attribute_name(:quantity), class: 'form-control', size: 10
+    =# f.input :quantity, label: false, error: false, placeholder: Itemization.human_attribute_name(:quantity), class: 'form-control'
+    = link_to_remove_association raw("<span class='glyphicon glyphicon-remove'></span>"), f

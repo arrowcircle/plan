@@ -1,6 +1,6 @@
 - cache [itemization, itemization.item] do
   %li@item{ id: "li_item_#{itemization.item_id}" }
-    - if itemization.item.children.any?
+    - if itemization.item.children_count > 0
       %span.tree__trigger@trigger
     = link_to itemization.item do
       = itemization.item.full_name

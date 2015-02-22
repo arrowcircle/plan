@@ -1,0 +1,19 @@
+= render 'items/sidebar'
+.row
+  .col-md-4
+    %span.header Категории
+  .col-md-4
+    = link_to [:new, :category], class: 'btn btn-primary' do
+      .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
+      = t('new')
+.row
+  - if @categories.any?
+    - cache [Category.count, Category.maximum(:updated_at).try(:to_i)] do
+      %ol.sortable= render partial: 'category', collection: @categories, as: :category
+  - else
+    %h2 Вы пока не добавили ни одной категории
+    %p
+      Начните с добавления корневых категорий. Затем добавьте наследников
+    = link_to [:new, :category], class: 'btn btn-primary' do
+      .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
+      = t('new')

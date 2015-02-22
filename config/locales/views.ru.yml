@@ -1,37 +1,43 @@
 ru:
-  layouts:
-    application:
-      close: Закрыть
-      sign_in: Войти
-      sign_out: Выход
-      guide: С чего начать?
-      invites: Пользователи
+  back: Назад
+  cancel: Отменить
+  catalog: Изделия
+  categories: Категории
+  delete: Удалить
+  delete_confirmation: Точно удалить?
+  edit: Редактировать
   invites:
     index:
       header: Пользователи
     new:
-      header: Добавить пользователей
       emails: Е-мэйл пользователя
+      header: Добавить пользователей
+  items:
+    sidebar:
+      categories: Категории
+      sort: Сортировка
+      view: Изделия
+  layouts:
+    application:
+      close: Закрыть
+      guide: С чего начать?
+      invites: Пользователи
+      sign_in: Войти
+      sign_out: Выход
   main:
     index:
-      start: Начать работу
       sign_in: Войти
+      start: Начать работу
+  new: Добавить
+  plans: Планы
+  profile: Профиль
   registrations:
     create:
       welcome: Добро пожаловать! Регистрация завершена, теперь можно приступать к работе
     new:
-      name: Фамилия и имя
       company: Название компании
+      name: Фамилия и имя
       sign_up: Начать работу
-  short_edit: Ред.
-  delete_confirmation: Точно удалить?
-  edit: Редактировать
-  back: Назад
-  new: Добавить
   save: Сохранить
-  cancel: Отменить
-  delete: Удалить
+  short_edit: Ред.
   title: План
-  catalog: Изделия
-  plans: Планы
-  profile: Профиль

@@ -7,8 +7,13 @@ Rails.application.routes.draw do
     get :set, on: :member
   end
 
+  resources :categories do
+    post 'sort', on: :collection
+  end
+
   resources :items do
     get :autocomplete_item_articul, on: :collection
+    get :tree, on: :collection
     get "(:tab)" => :index, tab: /complex|basic|final/, on: :collection
   end
 

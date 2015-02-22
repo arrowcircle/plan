@@ -1,6 +1,6 @@
 class Plan < ActiveRecord::Base
   Plan::Calculator
-  enum status: [ :active, :completed ]
+  enum status: [:active, :completed]
   has_many :planezations
   has_many :items, through: :planezations
   belongs_to :account

@@ -1,3 +1,4 @@
+= render 'items/sidebar'
 .row
   .col-lg-4
     %span.header Изделия (#{@items.total_count})
@@ -14,12 +15,7 @@
     = link_to [:new, :item], class: 'btn btn-primary' do
       .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
       = t('new')
-.row
-  %ul.nav.nav-tabs
-    %li{ class: "#{'active' unless params[:tab].present? }" }= link_to 'Все', [:items]
-    %li{ class: "#{'active' if params[:tab] == 'basic' }" }= link_to 'Базовые', '/items/basic'
-    %li{ class: "#{'active' if params[:tab] == 'complex' }" }= link_to 'Сборные', '/items/complex'
-    %li{ class: "#{'active' if params[:tab] == 'final' }" }= link_to 'Конечные', '/items/final'
+= render 'tabs'
 
 .row
   - if @items.any?
@@ -27,13 +23,13 @@
       %thead
         %tr
           %th= Item.human_attribute_name(:articul)
-          %th= Item.human_attribute_name(:name)
+          %th= Item.human_attribute_name(:category_id)
           %th
       %tbody
         - @items.all.each do |item|
           %tr
-            %td= link_to item.articul, item
-            %td= link_to item.name, item
+            %td= link_to item.full_name, item
+            %td= item.category.try(:name) || 'Без категории'
             %td
               .btn-group
                 = link_to t('short_edit'), [:edit, item], class: 'btn btn-default btn-sm'

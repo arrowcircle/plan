@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
   autocomplete :item, :articul, display_value: :full_name
 
+  def tree
+    @object = params[:object_type].constantize.find(params[:object_id]) if params[:object_type] && params[:object_id]
+    @objects = children_for(@object)
+  end
+
   def index
     @items = scope.search(params[:search]).page(params[:page]).per(20)
   end
@@ -43,10 +48,16 @@ class ItemsController < ApplicationController
   end
 
   def autocomplete_item_articul
-    @items = Item.for_account(account.id).search(params[:term]).order(:articul).limit(10)
+    @items = Item.for_account(account.id).search(params[:term]).order('category_id, position, articul').limit(20)
   end
 
   private
+
+  def children_for(obj = nil)
+    return Category.for_account(account.id).roots.order(:position) if obj.nil?
+    return obj.children.order(:position) + obj.items unless obj.is_a?(Item)
+    obj.children
+  end
 
   def scope
     return Item.for_account(account.id).complex(account.id) if params[:tab] == 'complex'
