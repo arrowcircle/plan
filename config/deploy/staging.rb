@@ -19,7 +19,7 @@ server 'plan.redde.ru', user: 'webmaster', roles: %w{web app db}
 
 # RVM options
 set :rvm_type, :user                     # Defaults to: :auto
-set :rvm_ruby_version, '2.1.4@plan'      # Defaults to: 'default'
+set :rvm_ruby_version, '2.2.0@plan'      # Defaults to: 'default'
 set :user, :webmaster
 set :rails_env, :production
 
