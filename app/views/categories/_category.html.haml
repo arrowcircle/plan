@@ -1,6 +1,7 @@
 %li.sort-tree{id: "list_#{category.id}"}
   .sort-tree__wrap
-    %span.glyphicon.glyphicon-book
+    %span.glyphicon{ class: glyphicon_for(category) }
+    &nbsp
     = link_to category.name, [:edit, category]
     = link_to '×', [category], method: :delete, data: { confirm: t('delete_confirmation') }
   - if category.has_children?
