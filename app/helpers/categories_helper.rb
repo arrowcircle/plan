@@ -1,4 +1,9 @@
 module CategoriesHelper
+  def glyphicon_for(category)
+    return "glyphicon-folder-open" if category.is_a?(Category::Complex)
+    "glyphicon-book"
+  end
+
   def categories_options_for_select
     options_for_select(
       arranged_categories,

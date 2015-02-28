@@ -1,5 +1,9 @@
-%h1
-  Редактирование категории
-  = link_to t('back'), [:categories], class: 'btn btn-default'
+= render 'items/sidebar'
+.col-md-8
+  %h1
+    Редактирование категории
+    = link_to t('back'), [:categories], class: 'btn btn-default'
 
-= render 'form'
+  = render 'form'
+
+.col-md-3= render 'types'
