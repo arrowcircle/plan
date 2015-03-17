@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141218204138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "account_users", force: true do |t|
+  create_table "account_users", force: :cascade do |t|
     t.integer  "account_id", null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141218204138) do
   add_index "account_users", ["account_id"], name: "index_account_users_on_account_id", using: :btree
   add_index "account_users", ["user_id"], name: "index_account_users_on_user_id", using: :btree
 
-  create_table "accounts", force: true do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string   "name"
     t.integer  "owner_id",   null: false
     t.datetime "created_at", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20141218204138) do
 
   add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id", using: :btree
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "account_id"
     t.string   "type"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20141218204138) do
   add_index "categories", ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   add_index "categories", ["type", "id"], name: "index_categories_on_type_and_id", using: :btree
 
-  create_table "invites", force: true do |t|
+  create_table "invites", force: :cascade do |t|
     t.integer  "account_id",   null: false
     t.string   "email",        null: false
     t.string   "token",        null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20141218204138) do
   add_index "invites", ["token"], name: "index_invites_on_token", using: :btree
   add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
-  create_table "itemizations", force: true do |t|
+  create_table "itemizations", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "parent_id"
     t.float    "quantity"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20141218204138) do
   add_index "itemizations", ["item_id"], name: "index_itemizations_on_item_id", using: :btree
   add_index "itemizations", ["parent_id"], name: "index_itemizations_on_parent_id", using: :btree
 
-  create_table "items", force: true do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "articul",     null: false
     t.string   "type"
@@ -85,17 +85,17 @@ ActiveRecord::Schema.define(version: 20141218204138) do
     t.integer  "position"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "plan_id"
   end
 
   add_index "items", ["account_id"], name: "index_items_on_account_id", using: :btree
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["type", "id"], name: "index_items_on_type_and_id", using: :btree
 
-  create_table "planezations", force: true do |t|
+  create_table "planezations", force: :cascade do |t|
     t.integer  "plan_id"
     t.integer  "item_id"
     t.float    "quantity"
+    t.float    "complete"
     t.integer  "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20141218204138) do
   add_index "planezations", ["item_id"], name: "index_planezations_on_item_id", using: :btree
   add_index "planezations", ["plan_id"], name: "index_planezations_on_plan_id", using: :btree
 
-  create_table "plans", force: true do |t|
+  create_table "plans", force: :cascade do |t|
     t.string   "name"
     t.integer  "status"
     t.integer  "account_id", null: false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20141218204138) do
 
   add_index "plans", ["account_id"], name: "index_plans_on_account_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "name",                   default: "", null: false
     t.string   "avatar"

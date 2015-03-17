@@ -3,5 +3,4 @@ FactoryGirl.define do
     name { Faker::Product.product_name }
     account
   end
-
 end

@@ -1,18 +1,29 @@
-%h1
-  = @plan.name
-  .btn-group
-    = link_to t('back'), [:items], class: 'btn btn-default'
-    = link_to t('edit'), [:edit, @plan], class: 'btn btn-primary'
+.col-lg-2
+.col-lg-9
+  %h1
+    = @plan.name
+    .btn-group
+      = link_to t('back'), [:items], class: 'btn btn-default'
+      = link_to t('edit'), [:edit, @plan], class: 'btn btn-primary'
+  %table.table
+    %thead
+      %tr
+        %th= Item.human_attribute_name(:name)
+        %th Прогресс
+    %tbody
+      - @plan.planezations.includes(:item).each do |item|
+        %tr
+          %td= link_to item.item.full_name, item.item
+          %td= plan_progress_for(item.progress)
+
   %h2 Состоит из:
   %table.table
     %thead
       %tr
-        %th= Item.human_attribute_name(:articul)
         %th= Item.human_attribute_name(:name)
         %th= Itemization.human_attribute_name(:quantity)
     %tbody
       - @plan.plan.each do |item, quantity|
         %tr
-          %td= link_to item.articul, item
-          %td= link_to item.name, item
+          %td= link_to item.full_name, item
           %td= quantity_for(quantity)

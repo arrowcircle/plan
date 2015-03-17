@@ -48,6 +48,6 @@ class PlansController < ApplicationController
 
   def plans_params
     params[:plan][:planezations_attributes].each { |k, v| v.merge!(account_id: account.id) } if params[:plan][:planezations_attributes]
-    params.require(:plan).permit(:name, :account_id, :planezations_attributes => [:item_id, :quantity, :account_id])
+    params.require(:plan).permit(:name, :account_id, :planezations_attributes => [:item_id, :quantity, :account_id, :complete, :_destroy, :id])
   end
 end

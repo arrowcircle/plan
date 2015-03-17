@@ -1,39 +1,43 @@
-.row
-  .col-lg-4
-    %span.header Планы (#{@plans.total_count})
-  .col-lg-4
-    = form_tag url_for(params.except(:search, :utf8, :commit)), method: :get do
-      .input-group
-        = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Поиск'
-        .input-group-btn
-          - if params[:search].present?
-            = link_to url_for(params.except(:search, :utf8, :commit)), class: 'btn btn-danger' do
-              %span.glyphicon.glyphicon-remove
-          = submit_tag "Поиск", class: 'btn btn-default'
-  .col-lg-4
-    = link_to [:new, :plan], class: 'btn btn-primary' do
-      .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
-      = t('new')
+.col-lg-2
+.col-lg-10
+  .row
+    .col-lg-4
+      %span.header Планы (#{@plans.total_count})
+    .col-lg-4
+      = form_tag url_for(params.except(:search, :utf8, :commit)), method: :get do
+        .input-group
+          = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Поиск'
+          .input-group-btn
+            - if params[:search].present?
+              = link_to url_for(params.except(:search, :utf8, :commit)), class: 'btn btn-danger' do
+                %span.glyphicon.glyphicon-remove
+            = submit_tag "Поиск", class: 'btn btn-default'
+    .col-lg-4
+      = link_to [:new, :plan], class: 'btn btn-primary' do
+        .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
+        = t('new')
 
-.row
-  - if @plans.any?
-    %table.table
-      %thead
-        %tr
-          %th= Plan.human_attribute_name(:name)
-          %th
-      %tbody
-        - @plans.all.each do |plan|
+  .row
+    - if @plans.any?
+      %table.table
+        %thead
           %tr
-            %td= link_to plan.name, plan
-            %td
-              .btn-group
-                = link_to t('short_edit'), [:edit, plan], class: 'btn btn-default btn-sm'
-                = link_to [plan], method: :delete, data: { confirm: t('delete_confirmation') }, class: 'btn btn-danger btn-sm' do
-                  %span.glyphicon.glyphicon-remove= t('delete')
-    = paginate @plans
-  - else
-    %h2 Вы пока не добавили ни одного плана
-    = link_to [:new, :plan], class: 'btn btn-primary' do
-      .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
-      = t('new')
+            %th= Plan.human_attribute_name(:name)
+            %th Прогресс
+            %th
+        %tbody
+          - @plans.all.each do |plan|
+            %tr
+              %td= link_to plan.name, plan
+              %td= plan_progress_for(plan.progress)
+              %td
+                .btn-group
+                  = link_to t('short_edit'), [:edit, plan], class: 'btn btn-default btn-sm'
+                  = link_to [plan], method: :delete, data: { confirm: t('delete_confirmation') }, class: 'btn btn-danger btn-sm' do
+                    %span.glyphicon.glyphicon-remove= t('delete')
+      = paginate @plans
+    - else
+      %h2 Вы пока не добавили ни одного плана
+      = link_to [:new, :plan], class: 'btn btn-primary' do
+        .glyphicon.glyphicon-plus{ 'aria-hidden' => "true" }
+        = t('new')

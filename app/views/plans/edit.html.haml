@@ -1,6 +1,6 @@
 %h1
   Редактирование плана
-  = link_to t('back'), [:items], class: 'btn btn-default'
+  = link_to t('back'), [:plans], class: 'btn btn-default'
 
 = simple_form_for @plan do |f|
   - if @plan.errors.any?

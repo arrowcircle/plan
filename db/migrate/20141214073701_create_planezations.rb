@@ -4,6 +4,7 @@ class CreatePlanezations < ActiveRecord::Migration
       t.integer :plan_id, index: true
       t.integer :item_id, index: true
       t.float :quantity
+      t.float :complete
       t.integer :account_id, null: false, index: true
       t.timestamps null: false
     end

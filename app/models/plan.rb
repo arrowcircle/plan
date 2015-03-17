@@ -16,6 +16,12 @@ class Plan < ActiveRecord::Base
     Plan.where("name ILIKE :q", q: "%#{q}%")
   end
 
+  def progress
+    qty = planezations.sum(:quantity)
+    qty = 1 if qty == 0.0
+    (planezations.sum(:complete) || 0) * 100 / qty
+  end
+
   def plan
     Plan::Calculator.new(self).plans
   end
