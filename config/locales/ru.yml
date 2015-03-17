@@ -27,6 +27,7 @@ ru:
         name: Название
         status: Статус
       planezation:
+        complete: Выполнено
         quantity: Количество
       user:
         email: E-mail
