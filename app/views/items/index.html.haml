@@ -5,7 +5,7 @@
   .col-lg-6
     = form_tag url_for(params.except(:search, :utf8, :commit, :category_id)), method: :get, class: 'form-inline' do
       .form-group
-        = select_tag :category_id, options_from_collection_for_select(Category.for_account(account.id).order(:position), :id, :name, params[:category_id]), include_blank: 'Категория ...', placeholder: 'Категория', class: 'form-control'
+        = select_tag :category_id, options_from_collection_for_select(Category.for_account(account.id).order(:position), :id, :name, params[:category_id]), include_blank: 'Все категории', placeholder: 'Категория', class: 'form-control'
       .form-group
         = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Поиск'
         .input-group-btn
