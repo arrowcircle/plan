@@ -5,20 +5,22 @@ class Category < ActiveRecord::Base
 
   has_ancestry
 
-  scope :for_account, ->(account_id) { where(account_id: account_id) }
+  scope :for_account, ->(account_id) { where("account_id = :account_id OR account_id IS NULL", account_id: account_id) }
 
   validates :name, presence: true
 
-  def destroy
-    self.errors.add(:base, 'Невозможно удалить корневую категорию с наследниками') if children.any?
-    if errors.blank?
-      super
-    else
-      false
+  def tree_ids
+    return [] if new_record?
+    Rails.cache.fetch(self) do
+      ancestor_ids + subtree_ids
     end
   end
 
-  private
+  def destroy
+    self.errors.add(:base, 'Невозможно удалить корневую категорию с наследниками') if children.any?
+    return super if errors.blank?
+    false
+  end
 
   def set_position(item)
   end

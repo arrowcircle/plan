@@ -7,11 +7,12 @@ class Item < ActiveRecord::Base
   belongs_to :account
   belongs_to :category
 
-  scope :for_account, ->(account_id) { where(account_id: account_id) }
+  scope :for_account, ->(account_id) { where("account_id = :account_id OR account_id IS NULL", account_id: account_id) }
   scope :basic, ->(account_id) { where.not(id: Itemization.for_account(account_id).pluck(:parent_id).uniq) }
   # All parent ids - all children ids
   scope :final, ->(account_id) { Item.where(id: (Itemization.for_account(account_id).pluck(:parent_id).uniq - Itemization.for_account(account_id).pluck(:item_id).uniq)) }
   scope :complex, ->(account_id) { Item.where(id: Itemization.for_account(account_id).pluck(:parent_id)) }
+  scope :for_category, ->(account_id, category_id) { for_account(account_id).where(category_id: Category.for_account(account_id).where(id: category_id).first.tree_ids) }
 
   accepts_nested_attributes_for :itemizations, allow_destroy: true
   accepts_nested_attributes_for :parent_itemizations, allow_destroy: true
@@ -67,7 +68,7 @@ class Item < ActiveRecord::Base
   end
 
   def set_position
-    return true unless category_id.present?
+    return true unless category.present?
     category.set_position(self)
   end
 end

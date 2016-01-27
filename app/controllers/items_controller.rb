@@ -7,7 +7,9 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = scope.search(params[:search]).page(params[:page]).per(20)
+    @items = scope.search(params[:search])
+    @items = @items.for_category(account.id, params[:category_id]) if params[:category_id].present? &&  Category.for_account(account.id).exists?(params[:category_id])
+    @items = @items.page(params[:page]).per(20)
   end
 
   def new
