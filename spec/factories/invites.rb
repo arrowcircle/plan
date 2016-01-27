@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :invite do
     account
-    email Faker::Internet.email
+    email FFaker::Internet.email
   end
 end

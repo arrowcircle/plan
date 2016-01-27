@@ -14,7 +14,7 @@ feature 'Планы' do
   scenario 'добавляет план' do
     visit plans_path
     click_link I18n.t('new'), match: :first
-    name = Faker::Product.product_name
+    name = FFaker::Product.product_name
     fill_in :plan_name, with: name
     click_button I18n.t('save')
     expect(page).to have_content name
@@ -24,7 +24,7 @@ feature 'Планы' do
   scenario 'удаляет план' do
     visit plans_path
     click_link I18n.t('new'), match: :first
-    name = Faker::Product.product_name
+    name = FFaker::Product.product_name
     fill_in :plan_name, with: name
     click_button I18n.t('save')
     expect { click_link I18n.t('delete'), match: :first }.to change(Plan, :count).by(-1)
@@ -34,7 +34,7 @@ feature 'Планы' do
     pending("настройка javascript")
     visit plans_path
     click_link I18n.t('new'), match: :first
-    name = Faker::Product.product_name
+    name = FFaker::Product.product_name
     fill_in :plan_name, with: name
     click_link I18n.t('add_item'), match: :first
     fill_in :item_name, with: parent.articul

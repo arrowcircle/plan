@@ -7,7 +7,7 @@ feature 'Инвайты' do
 
   scenario 'юзер приглашает нового юзера' do
     click_link I18n.t('new')
-    email = Faker::Internet.email
+    email = FFaker::Internet.email
     find('#invite_emails', match: :first).set(email)
     click_button I18n.t('save')
     expect(page).to have_content 'Мы отправили приглашения на указанные емейлы'
@@ -43,7 +43,7 @@ feature 'Инвайты' do
 
   scenario 'юзер регистрируется по инвайту' do
     visit "/invites/#{invite.token}"
-    fill_in :invite_name, with: Faker::Name.name
+    fill_in :invite_name, with: FFaker::Name.name
     fill_in :invite_password, with: '123123aA'
     click_button  I18n.t('save')
     expect(page).to have_content 'успешно'

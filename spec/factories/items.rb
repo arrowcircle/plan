@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :item do
-    name { Faker::Product.product_name }
-    articul { Faker::Product.model }
+    name { FFaker::Product.product_name }
+    articul { FFaker::Product.model }
     account
 
     factory :root do

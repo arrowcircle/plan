@@ -29,6 +29,9 @@
 /.capistrano
 *.sublime-project
 *.sublime-workspace
+/.ruby-version
+/.ruby-gemset
+/.rvmrc
 
 
 .idea/

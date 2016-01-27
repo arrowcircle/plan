@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :account do
-    name Faker::Company.name
+    name FFaker::Company.name
     association :owner, factory: :user
   end
 end

@@ -7,7 +7,7 @@ feature 'Изделия' do
   scenario 'добавляет базовое изделие' do
     visit items_path
     click_link I18n.t('new'), match: :first
-    name = Faker::Product.product_name
+    name = FFaker::Product.product_name
     fill_in :item_name, with: name
     fill_in :item_articul, with: name
     click_button I18n.t('save')

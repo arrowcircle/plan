@@ -7,7 +7,7 @@ feature 'Категории' do
   scenario 'добавляет корневую категорию' do
     visit categories_path
     click_link I18n.t('new'), match: :first
-    name = Faker::Product.product_name
+    name = FFaker::Product.product_name
     fill_in :category_name, with: name
     select('Обычная', from: 'Тип категории')
     click_button I18n.t('save')
@@ -19,7 +19,7 @@ feature 'Категории' do
     visit categories_path
     category = create(:category)
     click_link I18n.t('new'), match: :first
-    name = Faker::Product.product_name
+    name = FFaker::Product.product_name
     fill_in :category_name, with: name
     select('Для сборок', from: 'Тип категории')
     select(category.name, from: 'Родительская категория')

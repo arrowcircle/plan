@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Invitation do
   let(:invite) { create(:invite) }
-  let(:inv) { Invitation.new(invite: invite, name: Faker::Name.name, password: '123123aA') }
+  let(:inv) { Invitation.new(invite: invite, name: FFaker::Name.name, password: '123123aA') }
 
   it 'создает пользователя' do
     expect(inv.register).to eq true

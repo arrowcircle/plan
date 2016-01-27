@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Registration do
-  let(:reg) { Registration.new(email: Faker::Internet.email, name: Faker::Name.name, password: '123123aA', company: Faker::Company.name) }
+  let(:reg) { Registration.new(email: FFaker::Internet.email, name: FFaker::Name.name, password: '123123aA', company: FFaker::Company.name) }
   it 'создает аккаунт для пользователя' do
     reg.register
     expect(reg.user.accounts.count).to eq 1
