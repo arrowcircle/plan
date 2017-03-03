@@ -35,6 +35,7 @@ gem 'ancestry'
 
 gem 'dalli'
 gem 'rack-mini-profiler', group: :development
+gem 'web-console', '~> 2.0', group: :development
 
 gem 'rails-i18n'
 gem 'utf8-cleaner'
@@ -43,7 +44,6 @@ gem 'simple_xlsx_reader'
 group :development, :test do
   gem 'letter_opener'
   gem 'launchy'
-  gem 'web-console', '~> 2.0'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
